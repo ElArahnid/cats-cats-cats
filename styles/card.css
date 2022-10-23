@@ -1,0 +1,101 @@
+.cards__allcards {
+  position: relative;
+  display: flex;
+  gap: 27px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap row;
+  /* max-width: 1000px; */
+  padding: 0 100px;
+  margin: auto;
+}
+
+.cards__personal {
+  position: relative;
+  border-radius: 15px;
+  width: 200px;
+  height: 250px;
+  overflow: hidden;
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  transition: 500ms;
+}
+
+.cards__personal:hover {
+    transform: scale(1.05);
+    transition: 500ms;
+}
+
+.face {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cards__personal h3 {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #fff;
+  text-shadow: -3px 3px 6px #011d338a;
+  font-size: 130%;
+}
+
+.cards__personal > button.favor {
+  color: rgba(255, 217, 0, 0.43);
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(127, 255, 212, 0.685);
+  background-color: rgba(192, 192, 192, 0.562);
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+}
+
+.label-info:hover::before {
+content: attr(aria-label);
+/* transform: rotate(-45deg); */
+position: absolute;
+top: 45px;
+font-size: 18px;
+background-color: rgba(255, 255, 255, 0.8);
+color: gold;
+padding: 3px 7px;
+border-radius: 15px;
+box-shadow: -3px 3px 15px 1px #011d338a;
+transform: scale(1.05);
+transition: 500ms;
+}
+
+.cards__personal > button.favor.istrue {
+  font-size: 25px;
+  color: gold;
+  width: 40px;
+  height: 40px;
+  /* border: 1px solid red; */
+  background-color: salmon;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+}
+
+.cards__personal span {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 1.2em;
+  color: white;
+  display: none;
+}

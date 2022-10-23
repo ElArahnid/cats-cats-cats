@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клуб любителей рыб &quot;МИСКА СЧАСТЬЯ&quot;</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://kit.fontawesome.com/c767992f57.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__logo"><img src="./img/logo.png" alt="" class="header__logo_img"><span>Клуб любителей рыб
+                <br>&quot;МИСКА СЧАСТЬЯ&quot;</span></div>
+        <button class="header_btn"><i class="fa-solid fa-cat">+</i></button>
+    </header>
+    <main class="main container">
+        <section class="cards">
+            <h1>Клуб любителей рыб &quot;МИСКА СЧАСТЬЯ&quot;</h1>
+            <div class="cards__allcards">
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <span>copyright (c)</span>
+        <span>ElArahnid</span>
+    </footer>
+    <template id="cards__personal__template">
+        <div class="cards__personal">
+            <h3></h3>
+            <img src="" alt="" class="face">
+            <button class="favor label-info" aria-label=""><i class="fa-solid fa-crown"></i></button>
+            <span></span>
+        </div>
+    </template>
+    <div class="add-cat">
+        <div class="window-add-cat">
+            <button class="window-add-cat_close"><i class="fa-solid fa-xmark"></i></button>
+            <span>добавить новенького в клуб <span>(* - обязательное поле)</span></span>
+            <form class="form-add-cat" id="form-add-cat-id">
+                <div class="form-add-cat_preimg"></div>
+                <input name="id" class="form-add-cat_input" type="number" min="1" placeholder="* id" required>
+                <input name="name" type="text" class="form-add-cat_input" placeholder="* имя" required>
+                <input name="age" type="number" class="form-add-cat_input" placeholder="возраст">
+                <select name="rate" class="form-add-cat_select">
+                    <option value="0" selected disabled>Рейтинг</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <input name="img_link" type="url" class="form-add-cat_input" placeholder="адрес картинки">
+                <textarea name="description"  class="form-add-cat_textarea"
+                    placeholder="досье"></textarea>
+                <label class="form-add-cat_favor_area">
+                    <input type="checkbox" name="favourite" class="form-add-cat_favor_checkbox" placeholder="">
+                    <span class="form-add-cat_favor_label">Симпатяга?</span>
+                    <span class="form__fake-form-add-cat_favor_checkbox"><i class="fa-solid fa-crown"></i></span>
+                </label>
+                <button type="submit" class="form-add-cat_button">Кис-кис-кис!</button>
+            </form>
+        </div>
+        <script src="./scripts/cats.js" defer></script>
+        <script src="./scripts/api.js" defer></script>
+    </div><script src="./scripts/const.js" defer></script>
+    <script src="./scripts/card.js" defer></script>
+        <script src="./scripts/popup.js" defer></script>
+        <script src="./scripts/index.js" defer></script>
+</body>
+
+</html>

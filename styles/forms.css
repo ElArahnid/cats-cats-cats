@@ -1,0 +1,131 @@
+/* Форма добавления кота */
+.add-cat {
+  position: absolute;
+  background: var(--bg-fata-morgana-bgcolor);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: 500ms;
+}
+
+.show {
+ visibility: visible;
+ opacity: 1;
+ transform: scale(1.05);
+ transition: 500ms;
+}
+
+.window-add-cat {
+  position: fixed;
+  padding: 20px;
+  width: 70%;
+  top: 10%;
+  background-color: var(--bg-formdefault-bgcolor);
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.form-add-cat {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+@media (max-width: 760px) {
+    .form-add-cat, .window-add-cat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .form-add-cat_preimg {
+        width: 100%;
+        min-height: 110px;
+    }
+}
+
+.window-add-cat > span {
+  /* padding-bottom: 5px; */
+  text-transform: uppercase;
+  padding: 0 25px;
+}
+
+.window-add-cat > span > span {
+    text-transform: lowercase;
+    color: grey;
+    display: block;
+  }
+
+.form-add-cat_preimg {
+  grid-row: 1 / 4;
+  height: 100%;
+  background-image: url(../img/nofoto.jpg);
+  background-size: cover;
+  border-radius: 5px;
+}
+.form-add-cat_input {
+  border-radius: 5px;
+  padding: 5px;
+}
+.form-add-cat_select {
+  grid-column: 3 / 3;
+  border-radius: 5px;
+}
+.form-add-cat_textarea {
+  grid-column: 3 / 3;
+  grid-row: 1 / span 2;
+  height: 100%;
+  border-radius: 5px;
+  padding: 5px;
+}
+.form-add-cat_favor_area {
+  grid-column: 3 / 3;
+  border-radius: 5px;
+  background-color: rgba(255, 217, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  padding: 7px;
+  font-size: 105%;
+}
+
+.form-add-cat_button {
+  grid-column: 2 / 3;
+  border-radius: 5px;
+  padding: 7px;
+  background-color: black;
+  color: gold;
+}
+
+.window-add-cat_close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  font-size: 25px;
+  color: inherit;
+}
+
+.window-add-cat_close:hover {
+  color: red;
+  font-size: 26px;
+}
+
+.form__fake-form-add-cat_favor_checkbox,
+.form-add-cat_favor_label {
+  
+}
+
+.form-add-cat_favor_checkbox {
+  appearance: none;
+}

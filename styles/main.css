@@ -1,0 +1,95 @@
+@import url("root.css");
+@import url("clear.css");
+@import url("card.css");
+@import url("forms.css");
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(22, 53, 83);
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  /* position: fixed;
+    top: 0;
+    z-index: 10; */
+  /* padding: 10px; */
+}
+
+.header_btn {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  align-self: center;
+  margin-right: 10px;
+  box-shadow: -3px 3px 15px 1px #011d338a;
+}
+
+.fa-cat {
+  font-size: 33px;
+}
+
+main {
+  /* margin-top: 90px; */
+  background: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5) ), url(../img/main_bg.jpg);
+  background-size: cover;
+  width: 100%;
+  z-index: 1;
+  flex: 1;
+}
+
+.header__logo,
+.header__logo span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  color: black;
+}
+
+.header__logo_img {
+  height: 90px;
+  align-self: center;
+}
+
+.cards h1 {
+  /* margin: auto; */
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  z-index: 1;
+}
+
+footer > span {
+  padding: 20px;
+}
