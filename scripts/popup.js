@@ -40,4 +40,3 @@ class Popup {
             selectors["window-add-cat_close"].addEventListener("click", this.doUnVisible);
     }
 }
-
