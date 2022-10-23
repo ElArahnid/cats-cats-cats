@@ -1,5 +1,9 @@
-const popupAddCat = new Popup("add-cat");
-popupAddCat.fixMainListener();
+// const cardsContainer = document.querySelector('.cards');
+// const btnOpenPopupForm = document.querySelector('.header_btn');
+// const formCatAdd = document.querySelector('#form-add-cat-id');
+
+// const popupAddCat = new Popup("add-cat");
+// popupAddCat.fixMainListener();
 
 // создание объекта с данными формы
 function formDataAgregator(elements) {
@@ -35,6 +39,8 @@ function doingFormElements(stop) {
     const newCard = newCardPreview.getElement();
     selectors[cards__allcards].append(newCard);
 
+    popupAddCat.doUnVisible();
+
 }
 
 
@@ -55,3 +61,5 @@ allCats.forEach(function (catData) {
 
 })
 
+// btnOpenPopupForm.addEventListener('click', () => popupAddCat.doUnVisible())
+// formCatAdd.addEventListener('submit', () => doUnVisible())
