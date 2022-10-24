@@ -1,45 +1,4 @@
 const visioClass = "show";
-// console.log(document.querySelector(".add-cat"))
-
-// class Popup {
-//     constructor(mainClassName) {
-//         this._mainClassName = mainClassName;
-//         this.popup = document.querySelector(`.${mainClassName}`);
-//         this._closeByEscape = this._closeByEscape.bind(this);
-//     }
-
-// // слушаем Scape и реагируем
-// function _closeByEscape(event) {
-//     if (event.key === "Escape") {
-//         doUnVisible()
-//     }
-// }
-
-// // делаем видимым блок добавлением класса show и добавляем слушатель клика за открытым попапом
-// function doVisible() {
-//     document.querySelector(".add-cat").classList.add(visioClass);
-//     // this.popup.classList.add(visioClass);
-//     document.addEventListener("keyup", _closeByEscape);
-//     document.querySelector(`.${visioClass}`).addEventListener("click", (event) => {
-//         if (event.target.classList.contains(visioClass)) {
-//             doUnVisible()
-//         }
-//     })
-// }
-
-// // делаем НЕвидимым блок удалением класса show
-// function doUnVisible() {
-//     // console.log(this);
-//     selectors['add-cat'].classList.remove(visioClass);
-//     document.removeEventListener("keyup", _closeByEscape)
-// }
-
-// function fixMainListener() {
-// console.log(this);
-// selectors["header_btn"].addEventListener("click", doVisible);
-// selectors["window-add-cat_close"].addEventListener("click", doUnVisible);
-// }
-// }
 
 class Popup {
     /*
@@ -80,9 +39,19 @@ class Popup {
             // вешаем слушателя на крестик
             document.querySelector(".window-add-cat_close").addEventListener("click", this.closePopup)
 
+            // вешаем слушателя на кнопку любимчика
+            document.querySelector(".form-add-cat_favor_checkbox").addEventListener("click", () => {
+                if(document.querySelector("input.form-add-cat_favor_checkbox").checked) {
+                    document.querySelector(".form-add-cat_favor_area").classList.add("checked");
+                    document.querySelector(".form-add-cat_favor_label").innerHTML = "Симпатяга!";
+                }
+                else
+                {
+                    document.querySelector(".form-add-cat_favor_area").classList.remove("checked");
+                    document.querySelector(".form-add-cat_favor_label").innerHTML = "Симпатяга?";
+                }
+            })
     }
-
-
 
     // функция скрытия попапа удаление show с помощью крестика, клика вне окна, Escape
     closePopup = () => {

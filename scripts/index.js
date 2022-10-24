@@ -15,6 +15,7 @@ function formDataAgregator(elements) {
         }
 
         if (formArea.type === "chekbox") {
+            console.log(formArea.value + " = checkbox")
             agregatorResult[formArea.name] = formArea.checked;
         };
     })
@@ -39,22 +40,29 @@ function doingFormElements(stop) {
     popapDone.closePopup();
 }
 
-// Вывод всех котов на страницу
-allCats.forEach(function (catData) {
-    // формируем блок карточек из темплейта-болванки
-    const cardInstance = new Person(catData, "#cards__personal__template");
-    const newCardPerson = cardInstance.getElement();
+// получаем объекты с котами с сервера
+api.getAllCats()
+    .then(({ data }) => {
+        // Вывод всех котов на страницу
+        data.forEach(function (catData) {
+            // формируем блок карточек из темплейта-болванки
+            const cardInstance = new Person(catData, "#cards__personal__template");
+            const newCardPerson = cardInstance.getElement();
 
-    selectors.cards__allcards.append(newCardPerson);
-    if (catData.favourite) {
-        newCardPerson.querySelector(".cards__personal > .favor").classList.add("istrue");
-        newCardPerson.querySelector(".cards__personal > .favor").ariaLabel = "Симпатяга!";
-    }
-    else {
-        newCardPerson.querySelector(".cards__personal > .favor").ariaLabel = "Симпатяга?";
-    }
+            selectors.cards__allcards.append(newCardPerson);
 
-})
+            if (catData.favourite) {
+                newCardPerson.querySelector(".cards__personal > .favor").classList.add("istrue");
+                newCardPerson.querySelector(".cards__personal > .favor").ariaLabel = "Симпатяга!";
+            }
+            else {
+                newCardPerson.querySelector(".cards__personal > .favor").ariaLabel = "Симпатяга?";
+            }
+        })
+
+    })
+
+
 
 // прячем форму после submit
 formCatAdd.addEventListener('submit', doingFormElements)

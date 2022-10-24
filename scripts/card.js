@@ -5,7 +5,6 @@ class Person {
     }
     
     _getTempate(){ //возвращает содержимое шаблона в видел DOM узла
-        // return document.querySelector(this._selectorTemplate).content.querySelector('.cards__personal');
         return document.querySelector("#cards__personal__template").content.querySelector(".cards__personal")
     }
 
@@ -15,7 +14,6 @@ class Person {
         const cardImage =   this.element.querySelector(".cards__personal > .face");
         const cardLike  =    this.element.querySelector(".cards__personal > .favor");
         const aboutCat  =    this.element.querySelector(".cards__personal > span");
-        // console.log(cardLike);
 
         // if(!this._data.cardLike){
         //     cardLike.remove()
@@ -24,6 +22,7 @@ class Person {
         cardTitle.textContent = this._data.name;
         cardImage.src = this._data.img_link;
         aboutCat.textContent = this._data.description;
+        cardLike.checked = this._data.favourite;
 
         return this.element;
     }

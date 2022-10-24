@@ -43,10 +43,14 @@ class Api {
         // console.log('API');
     }
 
+    _onResponce(res){
+        return res.ok ? res.json() : Promise.reject({...res, message: "Ошибка на стороне сервера"});
+    }
+
     getAllCats(){
-        fetch(`${this._url}/show`, {
+        return fetch(`${this._url}/show`, {
             method: 'GET'
-        })
+        }).then(this._onResponce)
     }
 
 
@@ -55,7 +59,7 @@ class Api {
             method: 'POST',
             body: JSON.stringify(data),
             headers: this._headers
-        })
+        }).then(this._onResponce)
     }
 
     updateCatById(idCat, data){
