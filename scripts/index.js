@@ -1,9 +1,7 @@
-// const cardsContainer = document.querySelector('.cards');
-// const btnOpenPopupForm = document.querySelector('.header_btn');
-// const formCatAdd = document.querySelector('#form-add-cat-id');
-
-// const popupAddCat = new Popup("add-cat");
-// popupAddCat.fixMainListener();
+const cardsContainer = document.querySelector('.cards');
+const formCatAdd = document.querySelector('#form-add-cat-id');
+const popapDone = new Popup('add-cat', 'show', 'header_btn');
+popapDone.putListenerInBtn();
 
 // создание объекта с данными формы
 function formDataAgregator(elements) {
@@ -24,6 +22,7 @@ function formDataAgregator(elements) {
 }
 
 function doingFormElements(stop) {
+    // запрещаем дефолтный субмит
     stop.preventDefault();
 
     // деструктуризация элементов формы
@@ -32,17 +31,13 @@ function doingFormElements(stop) {
     //извлечение передаваемых данных формы
     const getElementsFromForm = formDataAgregator(fromFormElements);
 
-    console.log(getElementsFromForm);
-
     // формирование новой карточки и ее добавление
     const newCardPreview = new Person(getElementsFromForm, "#cards__personal__template");
     const newCard = newCardPreview.getElement();
-    selectors[cards__allcards].append(newCard);
+    selectors["cards__allcards"].prepend(newCard);
 
-    popupAddCat.doUnVisible();
-
+    popapDone.closePopup();
 }
-
 
 // Вывод всех котов на страницу
 allCats.forEach(function (catData) {
@@ -61,5 +56,5 @@ allCats.forEach(function (catData) {
 
 })
 
-// btnOpenPopupForm.addEventListener('click', () => popupAddCat.doUnVisible())
-// formCatAdd.addEventListener('submit', () => doUnVisible())
+// прячем форму после submit
+formCatAdd.addEventListener('submit', doingFormElements)
