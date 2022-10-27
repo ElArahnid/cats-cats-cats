@@ -10,7 +10,8 @@ class Popup {
     Класс окна add-cat, видимость изменяет show
      */
 
-    constructor(mainSelector, actionSelector, bttnOpen) {
+    constructor(action, mainSelector, actionSelector, bttnOpen) {
+        this.action = action;
         this.mainSelector = mainSelector; // add-cat
         this.actionSelector = actionSelector; // show
         this.bttnOpen = bttnOpen; // header_btn
@@ -19,11 +20,14 @@ class Popup {
     // функция добавления слушателя на кнопку
     putListenerInBtn() {
         document.querySelector(`.${this.bttnOpen}`).addEventListener("click", this.openPopup)
+        // console.log(document.querySelector(`.${this.bttnOpen}`));
     }
 
     // функция открытия модального окна добавлением show
     openPopup = () => {
             // открываем попап добавлением show class
+            document.querySelector(`.window-add-cat`).classList.remove(`hide`);
+            document.querySelector(`.window-add-cat`).classList.remove(`show`);
             document.querySelector(`.${this.mainSelector}`).classList.add(`${this.actionSelector}`);
 
             // вешаем слушателя на события клавиатуры
@@ -56,6 +60,9 @@ class Popup {
     // функция скрытия попапа удаление show с помощью крестика, клика вне окна, Escape
     closePopup = () => {
         document.querySelector(`.${this.actionSelector}`).classList.remove(this.actionSelector);
+        document.querySelector(`.window-add-cat`).classList.add(`hide`);
+        // document.querySelector(`.window-delete-cat`).classList.remove(`show`);
+        // document.querySelector(`.window-delete-cat`).classList.add(`hide`);
     }
 
     // слушаем Escape и реагируем
@@ -65,4 +72,5 @@ class Popup {
     }
     }
 }
+
 

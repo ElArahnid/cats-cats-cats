@@ -25,6 +25,7 @@
     transition: 500ms;
 }
 
+
 .face {
   height: 100%;
   width: 100%;
@@ -32,12 +33,51 @@
   display: block;
 }
 
+p.edit {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 80%;
+  width: 170px;
+  padding: 5px 15px;
+  background-color: rgba(255, 228, 196, 0.6);
+}
+
+#edit_edit::after {
+  content: " изменить";
+}
+
+#edit_edit:hover {
+  font-size: 110%;
+  color: red;
+}
+
+#edit_edit, #edit_delete  {
+  color: rgba(8, 4, 60, 0.655);
+  text-shadow: 1px 2px 3px #fff;
+}
+
+span#edit_edit, span#edit_delete  {
+  visibility: hidden;
+}
+
+#edit_delete::after {
+  content: " удалить";
+}
+
+#edit_delete:hover {
+  font-size: 110%;
+  color: red;
+}
+
 .cards__personal h3 {
   position: absolute;
   bottom: 15px;
   left: 15px;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 30px;
   color: #fff;
   text-shadow: -3px 3px 6px #011d338a;
   font-size: 130%;

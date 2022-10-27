@@ -1,3 +1,9 @@
+.add-cat_popup-container {
+  position: fixed;
+  width: 70%;
+  top: 5%;
+}
+
 /* Форма добавления кота */
 .add-cat {
   position: absolute;
@@ -11,26 +17,26 @@
   justify-content: flex-start;
   visibility: hidden;
   opacity: 0;
-  transform: scale(1.00);
-  transition: 500ms;
+  /* transition: 500ms; */
 }
 
 .show {
  visibility: visible;
  opacity: 1;
- transform: scale(1.00);
  transition: 500ms;
 }
 
+.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .window-add-cat {
-  position: fixed;
-  padding: 20px;
-  width: 70%;
-  top: 5%;
   background-color: var(--bg-formdefault-bgcolor);
   box-shadow: -3px 3px 15px 1px #011d338a;
   border-radius: 15px;
   text-align: center;
+  padding: 20px;
 }
 
 .form-add-cat {
@@ -120,6 +126,7 @@
   border: 0px;
   font-size: 25px;
   color: inherit;
+  z-index: 200;
 }
 
 .window-add-cat_close:hover {
@@ -131,4 +138,68 @@
   appearance: none;
 }
 
+/* удаление кота */
+.window-delete-cat {
+  position: fixed;
+  /* margin-top: 20px; */
+  padding: 20px 0;
+  width: 70%;
+  top: 5%;
+  background-color: var(--bg-formdefault-bgcolor);
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  border-radius: 15px;
+  text-align: center;
+}
 
+.form-delete-cat {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
+
+@media (max-width: 760px) {
+    .form-delete-cat, .window-delete-cat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.window-delete-cat > span {
+  /* padding-bottom: 5px; */
+  text-transform: uppercase;
+  padding: 0 25px;
+}
+
+.window-delete-cat > span > span {
+    text-transform: lowercase;
+    color: grey;
+    display: block;
+  }
+
+.form-delete-cat_button {
+  grid-column: 2 / 3;
+  border-radius: 5px;
+  padding: 7px;
+  background-color: black;
+  color: gold;
+}
+
+.window-delete-cat_close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0px;
+  font-size: 25px;
+  color: inherit;
+}
+
+.window-delete-cat_close:hover {
+  color: red;
+  font-size: 26px;
+}
