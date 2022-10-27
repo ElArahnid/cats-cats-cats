@@ -2,6 +2,7 @@ class Person {
     constructor(dataCat, selectorTemplate) {
         this._data = dataCat;
         this._selectorTemplate = selectorTemplate;
+        
     }
 
     _getTempate() { //возвращает содержимое шаблона в видел DOM узла
@@ -10,13 +11,14 @@ class Person {
 
     getElement() {
         this.element = this._getTempate().cloneNode(true); //клонируем полученное содержимое из шаблона
-        const cardTitle = this.element.querySelector(".cards__personal > h3");
-        const cardImage = this.element.querySelector(".cards__personal > .face");
-        const cardLike = this.element.querySelector(".cards__personal > .favor");
-        const aboutCat = this.element.querySelector(".cards__personal > span");
-        const deleteCat = this.element.querySelector("#edit_delete");
-        const editCat = this.element.querySelector("#edit_edit");
-        // console.log(deleteCat);
+        this.cardTitle = this.element.querySelector(".cards__personal > h3");
+        // console.log(this.cardTitle.textContent);
+        this.cardImage = this.element.querySelector(".cards__personal > .face");
+        this.cardLike = this.element.querySelector(".cards__personal > .favor");
+        
+        this.aboutCat = this.element.querySelector(".cards__personal > span");
+        this.deleteCat = this.element.querySelector("#edit_delete");
+        this.editCat = this.element.querySelector("#edit_edit");
 
         // функция открытия попапа по клику на меню карточки
         function _openPopupPerson() {
@@ -37,18 +39,20 @@ class Person {
         }
 
         // вешаем слушателя на кнопку удаления кота и открываем попап
-        deleteCat.addEventListener("click", () => {
+        this.deleteCat.addEventListener("click", () => {
             _openPopupPerson();
             // console.log(this.element);
             document.querySelector(".form-delete-cat_button").addEventListener("click", () => {
                 api.deleteCatById(this._data.id)
-                .then(_closePopupPerson());
+                    .then(_closePopupPerson())
+                    .then(this.element.remove())                  
+                    .then(localStorage.clear())  
             })
             // console.log(this._data)
         })
 
         // вешаем слушателя на кнопку редактирования кота
-        editCat.addEventListener("click", () => {
+        this.editCat.addEventListener("click", () => {
             console.log("edit");
         })
 
@@ -56,10 +60,13 @@ class Person {
         //     cardLike.remove()
         // }
 
-        cardTitle.textContent = this._data.name;
-        cardImage.src = this._data.img_link;
-        aboutCat.textContent = this._data.description;
-        cardLike.checked = this._data.favourite;
+        // console.log(this._data);
+
+        this.cardTitle.textContent = this._data.name;
+        this.cardImage.src = this._data.img_link;
+        this.aboutCat.textContent = this._data.description;
+        this.cardLike.checked = this._data.favourite;
+        this.element.classList.add(this._data.id);
 
         return this.element;
     }

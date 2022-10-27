@@ -1,5 +1,6 @@
 const cardsContainer = document.querySelector('.cards');
 const formCatAdd = document.querySelector('#form-add-cat-id');
+const favorClass = ".cards__personal > .favor";
 
 const popapDone = new Popup('add', 'add-cat', 'show', 'header_btn');
 popapDone.putListenerInBtn();
@@ -28,6 +29,24 @@ function formDataAgregator(elements) {
     return agregatorResult;
 }
 
+function createCat(dataCat) {
+    // console.log(dataCat);
+    // формируем блок карточек из темплейта-болванки
+    const cardInstance = new Person(dataCat, "#cards__personal__template");
+    const newCardPerson = cardInstance.getElement();
+    // console.log(cardInstance);
+    if (dataCat.id) {
+        selectors.cards__allcards.prepend(newCardPerson);
+        if (dataCat.favourite) {
+            newCardPerson.querySelector(favorClass).classList.add("istrue");
+            newCardPerson.querySelector(favorClass).ariaLabel = "Симпатяга!";
+        }
+        else {
+            newCardPerson.querySelector(favorClass).ariaLabel = "Симпатяга?";
+        }
+    }
+}
+
 function doingFormElements(stop) {
     // запрещаем дефолтный субмит
     stop.preventDefault();
@@ -38,52 +57,64 @@ function doingFormElements(stop) {
     //извлечение передаваемых данных формы
     const getElementsFromForm = formDataAgregator(fromFormElements);
 
-    function createCat(dataCat) {
-        // формирование новой карточки и ее добавление
-        const newCardPreview = new Person(dataCat, "#cards__personal__template");
-        const newCard = newCardPreview.getElement();
-        selectors["cards__allcards"].prepend(newCard);
-    }
-
-    // console.log(getElementsFromForm);
-
     api.addNewCat(getElementsFromForm)
         .then(() => {
             createCat(getElementsFromForm);
             popapDone.closePopup();
         })
-
 }
 
-// получаем объекты с котами с сервера
-api.getAllCats()
-    .then(({ data }) => {
-        // Вывод всех котов на страницу
-        data.forEach(function (catData) {
-            // формируем блок карточек из темплейта-болванки
-            const cardInstance = new Person(catData, "#cards__personal__template");
-            const newCardPerson = cardInstance.getElement();
-            if (catData.id) {
-                let bttnDel = newCardPerson.querySelector('#edit_delete');
-                bttnDel.innerHTML = `<span id="${catData.id}">${catData.id}</span>`;
-                
-                selectors.cards__allcards.append(newCardPerson);
+function areDataRelevance(minute) {
+    const setTimer = new Date(new Date().getTime() + minute * 60000);
+    localStorage.setItem('allCatsRefresh', setTimer)
+}
 
-                if (catData.favourite) {
-                    newCardPerson.querySelector(".cards__personal > .favor").classList.add("istrue");
-                    newCardPerson.querySelector(".cards__personal > .favor").ariaLabel = "Симпатяга!";
-                }
-                else {
-                    newCardPerson.querySelector(".cards__personal > .favor").ariaLabel = "Симпатяга?";
-                }
-            }
+function checkLocalStorage() {
+    const localData = JSON.parse(localStorage.getItem('allCats'));
+    // console.log(localData);
+    if (localData && localData.length) {
+        localData.forEach(function(catData) {
+            createCat(catData)
         })
+    } else {
+        // получаем объекты с котами с сервера
+        api.getAllCats()
+            .then(({ data }) => {
+                // Вывод всех котов на страницу
+                data.forEach(function(catData) {
+                    createCat(catData);
+                })
+                localStorage.setItem('allCats', JSON.stringify(data));
+                areDataRelevance(1);
+            })
+    }
+}
 
-    })
-
-
-
-
+checkLocalStorage();
 
 // прячем форму по submit после отправки данных
 formCatAdd.addEventListener('submit', doingFormElements)
+
+// метод получения спарсенного куки
+                        // function getCookie() {
+                        //     return document.cookie.split(';').reduce((acc, item) => {
+                        //         const [name, value] = item.split('=')
+                        //         return {...acc, [name]: value}
+                        //     }, {}
+                        //     )
+                        // }
+
+// // обращаемся к cookie
+// // document.cookie = 'email=elogim@gmail.com;samesite=strict;max-age=180';
+// Cookies.set('email','elogim@gmail.com');
+// Cookies.set('sdbvdb','svsdvsfvb');
+// // Cookies.remove('sdbvdb')
+// // console.log(document.cookie);
+// console.log(Cookies.get('email'));
+
+// // localStorage.setItem('name', 'string');
+// localStorage.setItem('name', JSON.stringify({name: "Dfcz"}));
+// localStorage.getItem('name')
+// console.log( JSON.parse(localStorage.getItem('name')))
+// // localStorage.removeItem('name');
+// localStorage.clear();
