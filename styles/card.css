@@ -99,6 +99,10 @@ span#edit_edit, span#edit_delete  {
   transform: rotate(45deg);
 }
 
+.istrue, .favor {
+  transition: 500ms;
+}
+
 .label-info:hover::before {
 content: attr(aria-label);
 /* transform: rotate(-45deg); */

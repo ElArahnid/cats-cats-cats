@@ -45,15 +45,17 @@ function editCatCard(cardID) {
 function updateFavInfo(datasFavStatus, datasID) {
     // console.log(datasFavStatus);
     if (datasFavStatus) {
-        console.log('status: ' + datasFavStatus, datasID);
-        document.querySelector(`${favorClass}[data-id="${datasID}"]`).classList.add("istrue");
-        document.querySelector(`${favorClass}`).ariaLabel = "Симпатяга!";
+        // console.log('status: ' + datasFavStatus, datasID);
+        // console.log(document.querySelector(`${favorClass}[data-id="${datasID}"]`));
+        document.querySelector(`.cards__personal > .favor[data-id="${datasID}"]`).classList.add("istrue");
+        document.querySelector(`.cards__personal > .favor`).ariaLabel = "Симпатяга!";
         localStorage.clear();
     }
     else {
-        console.log('status: ' + datasFavStatus, datasID);
-        document.querySelector(`${favorClass}[data-id="${datasID}"]`).classList.remove("istrue");
-        document.querySelector(`${favorClass}`).ariaLabel = "Симпатяга?";
+        // console.log('status: ' + datasFavStatus, datasID);
+        // console.log(document.querySelector(`${favorClass}[data-id="${datasID}"]`));
+        document.querySelector(`.cards__personal > .favor[data-id="${datasID}"]`).classList.remove("istrue");
+        document.querySelector(`.cards__personal > .favor`).ariaLabel = "Симпатяга?";
         localStorage.clear();
     }
 }
@@ -151,4 +153,8 @@ function checkLocalStorage() {
                 areDataRelevance(1);
             })
     }
+}
+
+function loginPopup(login, password) {
+    console.log(login, password);
 }

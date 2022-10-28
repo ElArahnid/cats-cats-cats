@@ -60,20 +60,41 @@ class Person {
         // обновление фаворита
         // console.log(this.cardLike, this._data.id);
         this.cardLike.addEventListener("click", () => {
-            console.log(this._data.favourite);
+            // console.log(this._data.favourite);
             if (this._data.favourite) {
-                api.updateCatById(this._data.id, {favourite: false})
-                .then(updateFavInfo(this._data.favourite, this._data.id))
-                .then(updateFavInfo(false, this._data.id))
-                // .then(localStorage.clear())
-                // .then(this.cardLike.innerText = this._data.id)
+                api.updateCatById(this._data.id, { favourite: false })
+                    .then(() => {
+                        this._data.favourite = false;
+                        updateFavInfo(this._data.favourite, this._data.id)
+                    })
+                    // .then(this.element.querySelector(".favor .fa-solid").classList.remove("fa-crown"))
+                    // .then(this.element.querySelector(".favor .fa-solid").classList.add("fa-heart"))
+                    .then(this.element.querySelector("button").ariaLabel = "Симпатяга?")
+                    .then(localStorage.clear())
             } else {
-                api.updateCatById(this._data.id, {favourite: true})
-                .then(updateFavInfo(this._data.favourite, this._data.id))
-                .then(updateFavInfo(true, this._data.id))
-                // .then(localStorage.clear())
-                // .then(this.cardLike.innerText = this._data.id)
+                updateFavInfo(true, this._data.id)
+                api.updateCatById(this._data.id, { favourite: true })
+                    .then(() => {
+                        this._data.favourite = true;
+                        updateFavInfo(this._data.favourite, this._data.id);
+                    })
+                    .then(this.element.querySelector("button").ariaLabel = "Симпатяга!")
+                    .then(localStorage.clear())
             }
+
+            // if (this._data.favourite) {
+            //     api.updateCatById(this._data.id, {favourite: false})
+            //     // .then(updateFavInfo(false, this._data.id))
+            //     .then(this.element.querySelector("button").classList.remove("istrue"))
+            //     .then(this.element.querySelector("button").ariaLabel = "Симпатяга?")
+            //     .then(localStorage.clear())
+            // } else {
+            //     api.updateCatById(this._data.id, {favourite: true})
+            //     // .then(updateFavInfo(true, this._data.id))
+            //     .then(this.element.querySelector("button").classList.add("istrue"))
+            //     .then(this.element.querySelector("button").ariaLabel = "Симпатяга!")
+            //     .then(localStorage.clear())
+            // }
         })
 
         // if(!this._data.cardLike){

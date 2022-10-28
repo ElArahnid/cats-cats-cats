@@ -1,3 +1,6 @@
+Cookies.set("email", "elogim@gmail.com", {expires: 1});
+Cookies.set("password", "000", {expires: 1});
+
 const cardsContainer = document.querySelector('.cards');
 const formCatAdd = document.querySelector('#form-add-cat-id');
 const formCatEdit = document.querySelector('#form-edit-cat-id');

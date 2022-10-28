@@ -44,6 +44,13 @@ class Popup {
                 document.querySelector(".form-add-cat_favor_label").innerHTML = "Симпатяга?";
             }
         })
+
+        // вешаем листенер на форму ввода изображения
+        document.querySelector(".form-add-cat_input.img_link").addEventListener("input", (val) => {
+            // console.log(document.querySelector(".form-add-cat .form-add-cat_preimg"));
+            document.querySelector(".form-add-cat .form-add-cat_preimg").setAttribute("style", `background-image: url(${val.target.value}); background-size: cover;`)
+        });
+
     }
 
     // функция скрытия попапа удаление show с помощью крестика, клика вне окна, Escape

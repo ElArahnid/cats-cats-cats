@@ -14,8 +14,11 @@ const selectors = {
     "window-add-cat_close": document.querySelector(".window-add-cat_close"),
 }
 
-const favorClass = ".cards__personal > .favor";
+let favorClass = ".cards__personal > .favor";
 const visioClass = "show";
+
+const loginAuth = "elogim@gmail.com";
+const passwordAuth = "000";
 
 
 
