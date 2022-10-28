@@ -64,6 +64,8 @@ class Api {
     }
 
     updateCatById(idCat, data){
+        // console.log(idCat, data);
+        // console.log(`${this._url}/update/${idCat}`);
         return fetch(`${this._url}/update/${idCat}`, {
             method: 'PUT',
             body: JSON.stringify(data),

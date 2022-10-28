@@ -1,11 +1,13 @@
-.add-cat_popup-container {
+.add-cat_popup-container,
+.edit-cat_popup-container {
   position: fixed;
   width: 70%;
   top: 5%;
 }
 
 /* Форма добавления кота */
-.add-cat {
+.add-cat,
+.edit-cat {
   position: absolute;
   background: var(--bg-fata-morgana-bgcolor);
   width: 100%;
@@ -21,9 +23,9 @@
 }
 
 .show {
- visibility: visible;
- opacity: 1;
- transition: 500ms;
+  visibility: visible;
+  opacity: 1;
+  transition: 500ms;
 }
 
 .hide {
@@ -31,7 +33,8 @@
   opacity: 0;
 }
 
-.window-add-cat {
+.window-add-cat,
+.window-edit-cat {
   background-color: var(--bg-formdefault-bgcolor);
   box-shadow: -3px 3px 15px 1px #011d338a;
   border-radius: 15px;
@@ -39,7 +42,8 @@
   padding: 20px;
 }
 
-.form-add-cat {
+.form-add-cat,
+.form-edit-cat {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -49,29 +53,35 @@
 }
 
 @media (max-width: 760px) {
-    .form-add-cat, .window-add-cat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .form-add-cat_preimg {
-        width: 100%;
-        min-height: 110px;
-    }
+  .form-add-cat,
+  .window-add-cat,
+  .form-edit-cat,
+  .window-edit-cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-add-cat_preimg,
+  .form-edit-cat_preimg {
+    width: 100%;
+    min-height: 110px;
+  }
 }
 
-.window-add-cat > span {
+.window-add-cat > span,
+.window-edit-cat > span {
   /* padding-bottom: 5px; */
   text-transform: uppercase;
   padding: 0 25px;
 }
 
-.window-add-cat > span > span {
-    text-transform: lowercase;
-    color: grey;
-    display: block;
-  }
+.window-add-cat > span > span,
+.window-edit-cat > span > span {
+  text-transform: lowercase;
+  color: grey;
+  display: block;
+}
 
 .form-add-cat_preimg {
   grid-row: 1 / 4;
@@ -80,22 +90,29 @@
   background-size: cover;
   border-radius: 5px;
 }
-.form-add-cat_input {
+.form-edit-cat_preimg {
+  grid-row: 1 / 4;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  border-radius: 5px;
+}
+.form-add-cat_input, .form-edit-cat_input {
   border-radius: 5px;
   padding: 5px;
 }
-.form-add-cat_select {
+.form-add-cat_select, .form-edit-cat_select {
   grid-column: 3 / 3;
   border-radius: 5px;
 }
-.form-add-cat_textarea {
+.form-add-cat_textarea, .form-edit-cat_textarea {
   grid-column: 3 / 3;
   grid-row: 1 / span 2;
   height: 100%;
   border-radius: 5px;
   padding: 5px;
 }
-.form-add-cat_favor_area {
+.form-add-cat_favor_area, .form-edit-cat_favor_area {
   grid-column: 3 / 3;
   border-radius: 5px;
   background-color: rgba(255, 217, 0, 0.3);
@@ -110,7 +127,7 @@
   text-shadow: -5px -2px 11px #fff;
 }
 
-.form-add-cat_button {
+.form-add-cat_button, .form-edit-cat_button {
   grid-column: 2 / 3;
   border-radius: 5px;
   padding: 7px;
@@ -118,7 +135,7 @@
   color: gold;
 }
 
-.window-add-cat_close {
+.window-add-cat_close, .window-edit-cat_close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -129,12 +146,12 @@
   z-index: 200;
 }
 
-.window-add-cat_close:hover {
+.window-add-cat_close:hover, .window-edit-cat_close:hover {
   color: red;
   font-size: 26px;
 }
 
-.form-add-cat_favor_checkbox {
+.form-add-cat_favor_checkbox, .form-edit-cat_favor_checkbox {
   appearance: none;
 }
 
@@ -161,12 +178,13 @@
 }
 
 @media (max-width: 760px) {
-    .form-delete-cat, .window-delete-cat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+  .form-delete-cat,
+  .window-delete-cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .window-delete-cat > span {
@@ -176,10 +194,10 @@
 }
 
 .window-delete-cat > span > span {
-    text-transform: lowercase;
-    color: grey;
-    display: block;
-  }
+  text-transform: lowercase;
+  color: grey;
+  display: block;
+}
 
 .form-delete-cat_button {
   grid-column: 2 / 3;
@@ -202,4 +220,22 @@
 .window-delete-cat_close:hover {
   color: red;
   font-size: 26px;
+}
+
+/* редактирование котов */
+.edit-cat-form {
+  position: fixed;
+  top: 5%;
+  background-color: var(--bg-formdefault-bgcolor);
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  border-radius: 15px;
+  text-align: center;
+  padding: 20px;
+  z-index: 200;
+  align-self: center;
+  justify-self: center;
+}
+
+label {
+  color: rgba(0, 0, 0, 0.4);
 }

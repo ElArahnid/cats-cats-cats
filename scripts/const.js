@@ -8,10 +8,14 @@ const selectors = {
     aboutCat: document.querySelector(".cards__personal > span"),
     favorCat: document.querySelector(".cards__personal > .favor"),
     "form-add-cat-id": document.querySelector("#form-add-cat-id"),
+    "form-edit-cat-id": document.querySelector("#form-edit-cat-id"),
     "add-cat": document.querySelector(".add-cat"),
     "header_btn": document.querySelector(".header_btn"),
     "window-add-cat_close": document.querySelector(".window-add-cat_close"),
 }
+
+const favorClass = ".cards__personal > .favor";
+const visioClass = "show";
 
 
 

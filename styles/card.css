@@ -139,3 +139,11 @@ transition: 500ms;
   color: white;
   display: none;
 }
+
+.card_edit, .card_edit:hover {
+  transform: scale(1.5);
+  transition: 200ms;
+  z-index: 1000;
+  background-color: var(--bg-formdefault-bgcolor);
+}
+
