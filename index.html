@@ -8,13 +8,13 @@
     <title>Клуб любителей рыб &quot;МИСКА СЧАСТЬЯ&quot;</title>
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://kit.fontawesome.com/c767992f57.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script>  
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script>
 </head>
 
 <body>
     <header class="header">
-        <div class="header__logo"><img src="./img/logo.png" alt="" class="header__logo_img"><span>Клуб любителей рыб
-                <br>&quot;МИСКА СЧАСТЬЯ&quot;</span></div>
+        <div class="header__logo"><a href=""><img src="./img/logo.png" alt="" class="header__logo_img"><span>Клуб любителей рыб
+                <br>&quot;МИСКА СЧАСТЬЯ&quot;</span></a></div>
         <button class="header_btn"><i class="fa-solid fa-cat">+</i></button>
     </header>
     <main class="main container">
@@ -25,7 +25,7 @@
         </section>
     </main>
     <footer class="footer">
-        <span>copyright (c)</span>
+        <span>copyright (c) 2022</span>
         <span>ElArahnid</span>
     </footer>
     <template id="cards__personal__template">
@@ -85,40 +85,45 @@
         </div>
     </div>
     <!-- редактирование котика -->
-    <div class="edit-cat-form edit-cat_popup-container hide">
-        <button class="window-edit-cat_close"><i class="fa-solid fa-xmark"></i></button>
-        <h3></h3>
-        <form class="form-edit-cat" id="form-edit-cat-id">
-            <div class="form-edit-cat_preimg"></div>
-            <label for="img_link">адрес изображения<input name="img_link" type="url" class="form-edit-cat_input img_link"></label>
-            <label for="age">возраст<input name="age" type="number" value="" class="form-edit-cat_input age"></label>
-            <label for="rate">Рейтинг
-            <select name="rate" class="form-edit-cat_select rate">
-                <option value="0" disabled>Рейтинг</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-        </label>
-            <label for="description">Досье
-            <textarea name="description" class="form-edit-cat_textarea description" placeholder="досье"></textarea></label>
-            <label class="form-edit-cat_favor_area">
-                <input type="checkbox" name="favourite" class="form-edit-cat_favor_checkbox" placeholder="">
-                <span class="form-edit-cat_favor_label">Симпатяга?</span>
-                <span class="form__fake-form-edit-cat_favor_checkbox"><i class="fa-solid fa-crown"></i></span>
-            </label>
-            <input type="hidden" value="edit" name="action">
-            <input type="hidden" class="id" name="id">
-            <button type="submit" class="form-edit-cat_button">Кис-кис-кис!</button>
-        </form>
-    </div>
+    <!-- <div class="edit-cat"> -->
+        <div class="edit-cat-form edit-cat_popup-container hide">
+            <button class="window-edit-cat_close"><i class="fa-solid fa-xmark"></i></button>
+            <h3></h3>
+            <form class="form-edit-cat" id="form-edit-cat-id">
+                <div class="form-edit-cat_preimg"></div>
+                <label for="img_link">адрес изображения<input name="img_link" type="url"
+                        class="form-edit-cat_input img_link"></label>
+                <label for="age">возраст<input name="age" type="number" value=""
+                        class="form-edit-cat_input age"></label>
+                <label for="rate">Рейтинг
+                    <select name="rate" class="form-edit-cat_select rate">
+                        <option value="0" disabled>Рейтинг</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </label>
+                <label for="description">Досье
+                    <textarea name="description" class="form-edit-cat_textarea description"
+                        placeholder="досье"></textarea></label>
+                <label class="form-edit-cat_favor_area">
+                    <input type="checkbox" name="favourite" class="form-edit-cat_favor_checkbox" placeholder="">
+                    <span class="form-edit-cat_favor_label">Симпатяга?</span>
+                    <span class="form__fake-form-edit-cat_favor_checkbox"><i class="fa-solid fa-crown"></i></span>
+                </label>
+                <input type="hidden" value="edit" name="action">
+                <input type="hidden" class="id" name="id">
+                <button type="submit" class="form-edit-cat_button">Кис-кис-кис!</button>
+            </form>
+        </div>
+    <!-- </div> -->
     <!--/ редактирование котика -->
 
 

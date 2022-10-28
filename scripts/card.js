@@ -62,14 +62,16 @@ class Person {
         this.cardLike.addEventListener("click", () => {
             console.log(this._data.favourite);
             if (this._data.favourite) {
-                api.updateCatById(this._data.id, {favourite: true})
-                .then(updateFavInfo(this._data.favourite, this._data.id))
-                .then(localStorage.clear())
-                // .then(this.cardLike.innerText = this._data.id)
-            } else {
                 api.updateCatById(this._data.id, {favourite: false})
                 .then(updateFavInfo(this._data.favourite, this._data.id))
-                .then(localStorage.clear())
+                .then(updateFavInfo(false, this._data.id))
+                // .then(localStorage.clear())
+                // .then(this.cardLike.innerText = this._data.id)
+            } else {
+                api.updateCatById(this._data.id, {favourite: true})
+                .then(updateFavInfo(this._data.favourite, this._data.id))
+                .then(updateFavInfo(true, this._data.id))
+                // .then(localStorage.clear())
                 // .then(this.cardLike.innerText = this._data.id)
             }
         })

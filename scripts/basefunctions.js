@@ -43,15 +43,18 @@ function editCatCard(cardID) {
 
 // update favorites view
 function updateFavInfo(datasFavStatus, datasID) {
+    // console.log(datasFavStatus);
     if (datasFavStatus) {
-        // console.log('status: ' + datasFavStatus, datasID, personasIdNode.querySelector(`${favorClass}[data-id="${datasID}"]`));
+        console.log('status: ' + datasFavStatus, datasID);
         document.querySelector(`${favorClass}[data-id="${datasID}"]`).classList.add("istrue");
         document.querySelector(`${favorClass}`).ariaLabel = "Симпатяга!";
+        localStorage.clear();
     }
     else {
-        // console.log('status: ' + datasFavStatus, datasID, personasIdNode.querySelector(`${favorClass}[data-id="${datasID}"]`));
+        console.log('status: ' + datasFavStatus, datasID);
         document.querySelector(`${favorClass}[data-id="${datasID}"]`).classList.remove("istrue");
         document.querySelector(`${favorClass}`).ariaLabel = "Симпатяга?";
+        localStorage.clear();
     }
 }
 
