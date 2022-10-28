@@ -21,6 +21,17 @@ class Person {
         this.editCat = this.element.querySelector("#edit_edit");
         this.editCatForm = this.element.querySelector("div.edit-cat-form");
 
+        // console.log(this.element, this._data.rate);
+        const fishRate = '<i class="fa-solid fa-fish"></i>';
+        let div = document.createElement("div");
+        this.element.append(div)
+        this.element.querySelector(".cards__personal > div").classList.add("rating")
+        for(let i = 0; i < this._data.rate; i++)
+        {
+            let tag = this.element.querySelector(".cards__personal > div.rating");
+            tag.innerHTML += fishRate;
+        }
+
         // функция открытия попапа по клику на меню карточки
         function _openPopupPerson() {
             document.querySelector(".add-cat").classList.add("show");

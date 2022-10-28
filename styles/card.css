@@ -151,3 +151,17 @@ transition: 500ms;
   background-color: var(--bg-formdefault-bgcolor);
 }
 
+.cards__personal > div.rating {
+position: absolute;
+top: 5px;
+left: 5px;
+color: rgba(0, 0, 255, 0.611);
+text-shadow: -1px 1px 6px white;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+width: min-content;
+gap: 1px;
+flex-wrap: wrap;
+flex-direction: column;
+}
