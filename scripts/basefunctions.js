@@ -8,11 +8,11 @@ function editCatCard(cardID) {
     document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.add("hide");
     // document.querySelector('.edit-cat-form')
     document.addEventListener("keyup", (event) => {
-        console.log(event.key);
-        if (event.key === "Escape")
+        // console.log(event.key);
+        if (event.key === "Escape"){
             document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.remove("hide");
             document.querySelector('.edit-cat-form').classList.remove("show");
-            document.querySelector('.edit-cat-form').classList.add("hide");
+            document.querySelector('.edit-cat-form').classList.add("hide");}
     })
 
     api.getCatById(cardID)
