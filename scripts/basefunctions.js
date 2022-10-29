@@ -129,6 +129,7 @@ function doingFormElements(stop) {
             Cookies.set("email", "elogim@gmail.com", {expires: 1});
             Cookies.set("password", "000", {expires: 1});
             replaceHeaderButtonOpen()
+            location.reload();
         }
         else {
 

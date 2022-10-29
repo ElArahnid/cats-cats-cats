@@ -4,11 +4,15 @@
 if((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
     console.log("вы не авторизованы");
     replaceHeaderButtonLock()
-
 }
 else {
     console.log("вы авторизованы");
     replaceHeaderButtonOpen()
+    document.querySelector("#exit").addEventListener("click", () => {
+        Cookies.remove("email")
+        Cookies.remove("password")
+        location.reload();
+    })
 }
 
 
