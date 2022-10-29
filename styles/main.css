@@ -112,3 +112,7 @@ footer {
 footer > span {
   padding: 20px;
 }
+
+#exit, .header_btn, .favor, #edit_edit, #edit_delete {
+  cursor: pointer;
+}
