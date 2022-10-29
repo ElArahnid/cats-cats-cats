@@ -3,6 +3,7 @@
 
 if((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
     console.log("вы не авторизованы");
+    document.querySelector("#exit").classList.add("hide");
     replaceHeaderButtonLock()
 }
 else {
