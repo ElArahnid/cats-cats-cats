@@ -122,9 +122,9 @@ function doingFormElements(stop) {
             })
     } else if (getElementsFromForm.action === 'auth') {
         const inEmail = document.getElementById("form-auth").email.value;
-        console.log(inEmail);
+        // console.log(inEmail);
         const inPassword = document.getElementById("form-auth").password.value;
-        console.log(inPassword);
+        // console.log(inPassword);
         if ((inEmail === loginAuth) && (inPassword === passwordAuth)) {
             Cookies.set("email", "elogim@gmail.com", {expires: 1});
             Cookies.set("password", "000", {expires: 1});
