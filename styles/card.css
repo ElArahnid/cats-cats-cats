@@ -155,7 +155,7 @@ transition: 500ms;
 position: absolute;
 top: 5px;
 left: 5px;
-color: rgba(0, 0, 255, 0.611);
+color: #4f8196bd;
 text-shadow: -1px 1px 6px white;
 display: flex;
 align-items: flex-start;
@@ -164,4 +164,13 @@ width: min-content;
 gap: 1px;
 flex-wrap: wrap;
 flex-direction: column;
+}
+
+.fa-fish:hover {
+  color: gold;
+  transition: 500ms;
+}
+
+.fa-fish {
+  transition: 500ms;
 }

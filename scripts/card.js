@@ -26,8 +26,7 @@ class Person {
         let div = document.createElement("div");
         this.element.append(div)
         this.element.querySelector(".cards__personal > div").classList.add("rating")
-        for(let i = 0; i < this._data.rate; i++)
-        {
+        for (let i = 0; i < this._data.rate; i++) {
             let tag = this.element.querySelector(".cards__personal > div.rating");
             tag.innerHTML += fishRate;
         }
@@ -64,49 +63,64 @@ class Person {
         })
 
         // вешаем слушателя на кнопку редактирования кота
-        this.editCat.addEventListener("click", () => {
-            editCatCard(this._data.id)
-        })
+        if ((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
+            (this.editCat.parentElement).classList.add("hide");
+            this.cardTitle.setAttribute("style", "margin-bottom: 0;");
+        }
+        else {
+            this.editCat.addEventListener("click", () => {
+                editCatCard(this._data.id)
+            })
+        }
 
         // обновление фаворита
         // console.log(this.cardLike, this._data.id);
-        this.cardLike.addEventListener("click", () => {
-            // console.log(this._data.favourite);
-            if (this._data.favourite) {
-                api.updateCatById(this._data.id, { favourite: false })
-                    .then(() => {
-                        this._data.favourite = false;
-                        updateFavInfo(this._data.favourite, this._data.id)
-                    })
-                    // .then(this.element.querySelector(".favor .fa-solid").classList.remove("fa-crown"))
-                    // .then(this.element.querySelector(".favor .fa-solid").classList.add("fa-heart"))
-                    .then(this.element.querySelector("button").ariaLabel = "Симпатяга?")
-                    .then(localStorage.clear())
-            } else {
-                updateFavInfo(true, this._data.id)
-                api.updateCatById(this._data.id, { favourite: true })
-                    .then(() => {
-                        this._data.favourite = true;
-                        updateFavInfo(this._data.favourite, this._data.id);
-                    })
-                    .then(this.element.querySelector("button").ariaLabel = "Симпатяга!")
-                    .then(localStorage.clear())
-            }
 
-            // if (this._data.favourite) {
-            //     api.updateCatById(this._data.id, {favourite: false})
-            //     // .then(updateFavInfo(false, this._data.id))
-            //     .then(this.element.querySelector("button").classList.remove("istrue"))
-            //     .then(this.element.querySelector("button").ariaLabel = "Симпатяга?")
-            //     .then(localStorage.clear())
-            // } else {
-            //     api.updateCatById(this._data.id, {favourite: true})
-            //     // .then(updateFavInfo(true, this._data.id))
-            //     .then(this.element.querySelector("button").classList.add("istrue"))
-            //     .then(this.element.querySelector("button").ariaLabel = "Симпатяга!")
-            //     .then(localStorage.clear())
-            // }
-        })
+        if((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
+            this.cardLike.addEventListener("click", () => {document.querySelector(".authform").classList.remove("hide")})       
+        }
+        else {
+            this.cardLike.addEventListener("click", () => {
+                console.log(this._data.favourite);
+                if (this._data.favourite) {
+                    api.updateCatById(this._data.id, { favourite: false })
+                        .then(() => {
+                            this._data.favourite = false;
+                            updateFavInfo(this._data.favourite, this._data.id)
+                        })
+                        // .then(this.element.querySelector(".favor .fa-solid").classList.remove("fa-crown"))
+                        // .then(this.element.querySelector(".favor .fa-solid").classList.add("fa-heart"))
+                        .then(this.element.querySelector("button").ariaLabel = "Симпатяга?")
+                        .then(localStorage.clear())
+                } else {
+                    updateFavInfo(true, this._data.id)
+                    api.updateCatById(this._data.id, { favourite: true })
+                        .then(() => {
+                            this._data.favourite = true;
+                            updateFavInfo(this._data.favourite, this._data.id);
+                        })
+                        .then(this.element.querySelector("button").ariaLabel = "Симпатяга!")
+                        .then(localStorage.clear())
+                }
+                // console.log(dataCat);
+                // if (this._data.favourite) {
+                //     api.updateCatById(this._data.id, {favourite: false})
+                //     // .then(updateFavInfo(false, this._data.id))
+                //     .then(this.element.querySelector("button").classList.remove("istrue"))
+                //     .then(this.element.querySelector("button").ariaLabel = "Симпатяга?")
+                //     .then(localStorage.clear())
+                // } else {
+                //     api.updateCatById(this._data.id, {favourite: true})
+                //     // .then(updateFavInfo(true, this._data.id))
+                //     .then(this.element.querySelector("button").classList.add("istrue"))
+                //     .then(this.element.querySelector("button").ariaLabel = "Симпатяга!")
+                //     .then(localStorage.clear())
+                // }
+            })
+    
+        }
+
+
 
         // if(!this._data.cardLike){
         //     cardLike.remove()

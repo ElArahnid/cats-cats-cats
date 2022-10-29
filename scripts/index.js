@@ -1,9 +1,22 @@
-Cookies.set("email", "elogim@gmail.com", {expires: 1});
-Cookies.set("password", "000", {expires: 1});
+// Cookies.set("email", "elogim@gmail.com", {expires: 1});
+// Cookies.set("password", "000", {expires: 1});
+
+if((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
+    console.log("вы не авторизованы");
+    replaceHeaderButtonLock()
+
+}
+else {
+    console.log("вы авторизованы");
+    replaceHeaderButtonOpen()
+}
+
 
 const cardsContainer = document.querySelector('.cards');
 const formCatAdd = document.querySelector('#form-add-cat-id');
 const formCatEdit = document.querySelector('#form-edit-cat-id');
+const authForm = document.getElementById("form-auth");
+// console.log(authForm);
 const popapDone = new Popup('add', 'add-cat', 'show', 'header_btn');
 popapDone.putListenerInBtn();
 
@@ -12,6 +25,7 @@ checkLocalStorage();
 // прячем форму по submit после отправки данных
 formCatAdd.addEventListener('submit', doingFormElements)
 formCatEdit.addEventListener('submit', doingFormElements)
+authForm.addEventListener('submit', doingFormElements)
 
 
 

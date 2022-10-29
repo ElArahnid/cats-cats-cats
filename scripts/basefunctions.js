@@ -9,10 +9,11 @@ function editCatCard(cardID) {
     // document.querySelector('.edit-cat-form')
     document.addEventListener("keyup", (event) => {
         // console.log(event.key);
-        if (event.key === "Escape"){
+        if (event.key === "Escape") {
             document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.remove("hide");
             document.querySelector('.edit-cat-form').classList.remove("show");
-            document.querySelector('.edit-cat-form').classList.add("hide");}
+            document.querySelector('.edit-cat-form').classList.add("hide");
+        }
     })
 
     api.getCatById(cardID)
@@ -44,6 +45,7 @@ function editCatCard(cardID) {
 // update favorites view
 function updateFavInfo(datasFavStatus, datasID) {
     // console.log(datasFavStatus);
+    
     if (datasFavStatus) {
         // console.log('status: ' + datasFavStatus, datasID);
         // console.log(document.querySelector(`${favorClass}[data-id="${datasID}"]`));
@@ -92,7 +94,7 @@ function createCat(dataCat) {
     if (dataCat.id) {
         selectors.cards__allcards.prepend(newCardPerson);
         localStorage.clear();
-        // console.log(dataCat.favourite);
+        // console.log(dataCat);
         updateFavInfo(dataCat.favourite, dataCat.id);
     }
 }
@@ -118,13 +120,27 @@ function doingFormElements(stop) {
                 createCat(getElementsFromForm);
                 popapDone.closePopup();
             })
-    } else {
+    } else if (getElementsFromForm.action === 'auth') {
+        const inEmail = document.getElementById("form-auth").email.value;
+        console.log(inEmail);
+        const inPassword = document.getElementById("form-auth").password.value;
+        console.log(inPassword);
+        if ((inEmail === loginAuth) && (inPassword === passwordAuth)) {
+            Cookies.set("email", "elogim@gmail.com", {expires: 1});
+            Cookies.set("password", "000", {expires: 1});
+            replaceHeaderButtonOpen()
+        }
+        else {
+
+        }
+    }
+    else {
         // если не edit, то добавляем кота
         api.addNewCat(getElementsFromForm)
             .then(() => {
                 createCat(getElementsFromForm);
                 popapDone.closePopup();
-            })
+            }).then(console.log(getElementsFromForm))
     }
 
 }
@@ -155,6 +171,16 @@ function checkLocalStorage() {
     }
 }
 
-function loginPopup(login, password) {
-    console.log(login, password);
+function replaceHeaderButtonLock() {
+    document.querySelector(".header_btn i").innerHTML = "?";
+    document.querySelector(".header_btn i").classList.remove("fa-cat");
+    document.querySelector(".header_btn i").classList.add("fa-lock", "auth");
+}
+
+function replaceHeaderButtonOpen() {
+    document.querySelector(".header_btn i").innerHTML = "+";
+    document.querySelector(".header_btn i").classList.remove("fa-lock");
+    document.querySelector(".header_btn i").classList.add("fa-cat");
+    document.querySelector(".authform").classList.add("hide");
+    
 }

@@ -1,16 +1,31 @@
 class Popup {
-    constructor(action, mainSelector, actionSelector, bttnOpen, idCat) {
+    constructor(action, mainSelector, actionSelector, bttnOpen) {
         this.action = action;
         this.mainSelector = mainSelector; // add-cat
         this.actionSelector = actionSelector; // show
         this.bttnOpen = bttnOpen; // header_btn
-        this.idCat = idCat;
     }
 
     // функция добавления слушателя на кнопку в хедере
     putListenerInBtn() {
-        document.querySelector(`.${this.bttnOpen}`).addEventListener("click", this.openPopup)
+        if ((loginAuth === Cookies.get("email")) && (passwordAuth === Cookies.get("password"))) {
+            document.querySelector(`.${this.bttnOpen}`).addEventListener("click", this.openPopup)
+        }
+        else {
+            document.querySelector(`.${this.bttnOpen} .auth`).parentElement.addEventListener("click", () => {
+                console.log(document.querySelector(".window-auth-cat_close"));
+                document.querySelector("div.authform").classList.remove("hide");
+                document.querySelector(".window-auth-cat_close").addEventListener("click", () => {
+                    document.querySelector("div.authform").classList.add("hide");
+                })
+                console.log("выводим попап авторизации");
+            })
+        }
         // console.log(document.querySelector(`.${this.bttnOpen}`));
+    }
+
+    authPopap = () => {
+
     }
 
     // функция открытия модального окна добавлением show

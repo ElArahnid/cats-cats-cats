@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Клуб любителей рыб &quot;МИСКА СЧАСТЬЯ&quot;</title>
     <link rel="stylesheet" href="./styles/main.css">
-    <script src="https://kit.fontawesome.com/c767992f57.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c767992f57.js" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script>
 </head>
 
@@ -15,7 +15,7 @@
     <header class="header">
         <div class="header__logo"><a href=""><img src="./img/logo.png" alt="" class="header__logo_img"><span>Клуб любителей рыб
                 <br>&quot;МИСКА СЧАСТЬЯ&quot;</span></a></div>
-        <button class="header_btn"><i class="fa-solid fa-cat">+</i></button>
+        <button class="header_btn"><i class="fa-solid fa-cat"></i></button>
     </header>
     <main class="main container">
         <section class="cards">
@@ -125,6 +125,18 @@
         </div>
     <!-- </div> -->
     <!--/ редактирование котика -->
+    <!-- форма авторизации -->
+    <div class="authform hide">
+        <form class="form-auth" id="form-auth">
+        <button class="window-auth-cat_close"><i class="fa-solid fa-xmark"></i></button>
+        <h3>стой! кто идет?!</h3>
+        <input name="email" type="email" class="form-add-cat_input" placeholder="ящик для писем?" required>
+        <input name="password" type="password" class="form-add-cat_input" placeholder="волшебное слово?" required>
+        <input type="hidden" value="auth" name="action">
+        <button type="submit" class="form-edit-cat_button">это же я!</button>
+    </form>
+    </div>
+    <!--/ форма авторизации -->
 
 
     <script src="./scripts/cats.js" defer></script>
