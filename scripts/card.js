@@ -82,8 +82,8 @@ class Person {
             this.cardTitle.setAttribute("style", "margin-bottom: 0;");
         }
         else {
-            // document.querySelector(".add-cat_popup-container").classList.add("hide");
             this.editCat.addEventListener("click", () => {
+                document.querySelector(".add-cat_popup-container").classList.add("hide");
                 editCatCard(this._data.id)
                 document.querySelector(".add-cat").classList.add("show")
                 document.addEventListener("click", (event) => {
