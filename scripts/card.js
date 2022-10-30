@@ -14,7 +14,7 @@ class Person {
         this.cardTitle = this.element.querySelector(".cards__personal > h3");
         this.cardImage = this.element.querySelector(".cards__personal > .face");
         this.cardLike = this.element.querySelector(".cards__personal > .favor");
-        this.aboutCat = this.element.querySelector(".cat-info");
+        this.aboutCat = this.element.querySelector(".cards__personal > span");
         this.deleteCat = this.element.querySelector("#edit_delete");
         this.editCat = this.element.querySelector("#edit_edit");
         this.editCatForm = this.element.querySelector("div.edit-cat-form");
@@ -30,7 +30,7 @@ class Person {
             tag.innerHTML += fishRate;
         }
 
-        this.element.addEventListener("click", (event) => {
+        this.element.querySelector("img").addEventListener("click", (event) => {
             document.querySelector("div.cat-info").classList.remove("hide");
             document.querySelector("div.cat-info").innerHTML = `
                 <button class="window-info-cat_close"><i class="fa-solid fa-xmark"></i></button>
@@ -163,7 +163,7 @@ class Person {
         this.cardImage.src = this._data.img_link;
         // this.aboutCat.textContent = this._data.description;
         this.cardLike.checked = this._data.favourite;
-        // this.element.classList.add(this._data.id);
+        this.element.classList.add(this._data.id);
         this.element.setAttribute('data-id', this._data.id);
         this.element.querySelector("button").setAttribute('data-id', this._data.id)
 

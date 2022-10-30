@@ -32,7 +32,7 @@ class Popup {
     openPopup = () => {
         // console.log(this.action);
         // action = this.action;
-        // console.log(action, this);
+        console.log(this.action);
         // открываем попап добавлением show class
         document.querySelector(`.window-${this.action}-cat`).classList.remove(`hide`);
         document.querySelector(`.window-${this.action}-cat`).classList.remove(`show`);
