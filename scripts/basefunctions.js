@@ -1,5 +1,3 @@
-
-
 // edit cat card
 function editCatCard(cardID) {
     // скрываем окно редактируемой карточки
@@ -8,7 +6,6 @@ function editCatCard(cardID) {
     document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.add("hide");
     // document.querySelector('.edit-cat-form')
     document.addEventListener("keyup", (event) => {
-        // console.log(event.key);
         if (event.key === "Escape") {
             document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.remove("hide");
             document.querySelector('.edit-cat-form').classList.remove("show");
@@ -44,18 +41,13 @@ function editCatCard(cardID) {
 
 // update favorites view
 function updateFavInfo(datasFavStatus, datasID) {
-    // console.log(datasFavStatus);
     
     if (datasFavStatus) {
-        // console.log('status: ' + datasFavStatus, datasID);
-        // console.log(document.querySelector(`${favorClass}[data-id="${datasID}"]`));
         document.querySelector(`.cards__personal > .favor[data-id="${datasID}"]`).classList.add("istrue");
         document.querySelector(`.cards__personal > .favor`).ariaLabel = "Симпатяга!";
         localStorage.clear();
     }
     else {
-        // console.log('status: ' + datasFavStatus, datasID);
-        // console.log(document.querySelector(`${favorClass}[data-id="${datasID}"]`));
         document.querySelector(`.cards__personal > .favor[data-id="${datasID}"]`).classList.remove("istrue");
         document.querySelector(`.cards__personal > .favor`).ariaLabel = "Симпатяга?";
         localStorage.clear();
@@ -67,27 +59,18 @@ function formDataAgregator(elements) {
     let agregatorResult = {};
 
     elements.forEach((formArea) => {
-        // console.log(`formArea.name: ${formArea.name} \r\nformArea.value: ${formArea.value} \r\nformArea.type: ${formArea.type} \r\nformArea.checked: ${formArea.checked}`);
         if (formArea === "submit") return;
-
         if (formArea.type != "checkbox") {
             agregatorResult[formArea.name] = formArea.value;
-            // console.log(agregatorResult[formArea.name]);
         }
-
         if (formArea.type === "checkbox") {
             agregatorResult[formArea.name] = formArea.checked;
-            // console.log(`formArea ${formArea}`, agregatorResult[formArea.name], formArea.checked);
-
         };
-        // console.log("agregatorResult: " + agregatorResult);
-        // console.log(formArea);
     })
     return agregatorResult;
 }
 
 function createCat(dataCat) {
-    // console.log(dataCat);
     // формируем блок карточек из темплейта-болванки
     const cardInstance = new Person(dataCat, "#cards__personal__template");
     const newCardPerson = cardInstance.getElement();

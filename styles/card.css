@@ -135,15 +135,6 @@ transition: 500ms;
   transform: rotate(45deg);
 }
 
-.cards__personal span {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 1.2em;
-  color: white;
-  display: none;
-}
-
 .card_edit, .card_edit:hover {
   transform: scale(1.5);
   transition: 200ms;
@@ -173,4 +164,30 @@ flex-direction: column;
 
 .fa-fish {
   transition: 500ms;
+}
+
+.cat-info {
+  box-sizing: border-box;
+  position: fixed;
+  align-self: center;
+  top: 5%;
+  padding: 30px;
+  width: 80%;
+  transform: scale(1.0);
+  transition: 200ms;
+  z-index: 2000;
+  background-color: var(--bg-formdefault-bgcolor);
+  box-shadow: -1px 2px 14px 0px black;
+  border-radius: 15px;
+  z-index: 1000;
+  font-size: 120%;
+}
+
+.bigger {
+  min-height: 100px;
+  width: 80vw;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
 }

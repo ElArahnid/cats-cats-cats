@@ -147,7 +147,7 @@
   color: gold;
 }
 
-.window-add-cat_close, .window-edit-cat_close, .window-auth-cat_close {
+.window-add-cat_close, .window-edit-cat_close, .window-auth-cat_close, .window-info-cat_close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -156,9 +156,10 @@
   font-size: 25px;
   color: inherit;
   z-index: 200;
+  cursor: pointer;
 }
 
-.window-add-cat_close:hover, .window-edit-cat_close:hover, .window-auth-cat_close:hover {
+.window-add-cat_close:hover, .window-edit-cat_close:hover, .window-auth-cat_close:hover, , .window-info-cat_close:hover {
   color: red;
   font-size: 26px;
 }
@@ -168,7 +169,7 @@
 }
 
 /* удаление кота */
-.window-delete-cat {
+.window-delete-cat, .window-edit-cat {
   position: fixed;
   /* margin-top: 20px; */
   padding: 20px 0;

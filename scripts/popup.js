@@ -24,15 +24,18 @@ class Popup {
         // console.log(document.querySelector(`.${this.bttnOpen}`));
     }
 
-    authPopap = () => {
+    // authPopap = () => {
 
-    }
+    // }
 
     // функция открытия модального окна добавлением show
     openPopup = () => {
+        // console.log(this.action);
+        // action = this.action;
+        // console.log(action, this);
         // открываем попап добавлением show class
-        document.querySelector(`.window-add-cat`).classList.remove(`hide`);
-        document.querySelector(`.window-add-cat`).classList.remove(`show`);
+        document.querySelector(`.window-${this.action}-cat`).classList.remove(`hide`);
+        document.querySelector(`.window-${this.action}-cat`).classList.remove(`show`);
         document.querySelector(`.${this.mainSelector}`).classList.add(`${this.actionSelector}`);
 
         // вешаем слушателя на события клавиатуры
@@ -42,11 +45,12 @@ class Popup {
         document.querySelector(`.${this.actionSelector}`).addEventListener("click", (event) => {
             if (event.target.classList.contains(this.actionSelector)) {
                 this.closePopup()
-            }
+            } 
         })
 
         // вешаем слушателя на крестик
-        document.querySelector(".window-add-cat_close").addEventListener("click", this.closePopup)
+        document.querySelector(`.window-${this.action}-cat_close`).addEventListener("click", this.closePopup)
+        // console.log('слушатель на крестике');
 
         // вешаем слушателя на кнопку любимчика
         document.querySelector(".form-add-cat_favor_checkbox").addEventListener("click", () => {
@@ -62,7 +66,6 @@ class Popup {
 
         // вешаем листенер на форму ввода изображения
         document.querySelector(".form-add-cat_input.img_link").addEventListener("input", (val) => {
-            // console.log(document.querySelector(".form-add-cat .form-add-cat_preimg"));
             document.querySelector(".form-add-cat .form-add-cat_preimg").setAttribute("style", `background-image: url(${val.target.value}); background-size: cover;`)
         });
 
@@ -70,11 +73,8 @@ class Popup {
 
     // функция скрытия попапа удаление show с помощью крестика, клика вне окна, Escape
     closePopup = () => {
-        // console.log(this.action, this.mainSelector, this.actionSelector, this.bttnOpen);
         document.querySelector(`.${this.actionSelector}`).classList.remove(this.actionSelector);
-        document.querySelector(`.window-add-cat`).classList.add(`hide`);
-        // document.querySelector(`.window-delete-cat`).classList.remove(`show`);
-        // document.querySelector(`.window-delete-cat`).classList.add(`hide`);
+        document.querySelector(`.window-${this.action}-cat`).classList.add(`hide`);
         localStorage.clear();
     }
 
