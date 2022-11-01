@@ -1,3 +1,6 @@
+
+
+
 // edit cat card
 function editCatCard(cardID) {
     // скрываем окно редактируемой карточки
@@ -41,16 +44,16 @@ function editCatCard(cardID) {
 
 // update favorites view
 function updateFavInfo(datasFavStatus, datasID) {
-    
+
     if (datasFavStatus) {
         document.querySelector(`.cards__personal > .favor[data-id="${datasID}"]`).classList.add("istrue");
         document.querySelector(`.cards__personal > .favor`).ariaLabel = "Симпатяга!";
-        localStorage.clear();
+        // localStorage.clear();
     }
     else {
         document.querySelector(`.cards__personal > .favor[data-id="${datasID}"]`).classList.remove("istrue");
         document.querySelector(`.cards__personal > .favor`).ariaLabel = "Симпатяга?";
-        localStorage.clear();
+        // localStorage.clear();
     }
 }
 
@@ -70,13 +73,40 @@ function formDataAgregator(elements) {
     return agregatorResult;
 }
 
+function agePrefix(age) {
+
+    let lastNumberPrefix = (age + '').split('');
+    let prefix = '';
+    let lastNuberAge = lastNumberPrefix[lastNumberPrefix.length - 1];
+
+    if(age === 1) {prefix = 'год'} else
+    if(age >= 5 && age <= 20) {prefix = "лет"} else {
+    if (lastNuberAge === 1) { prefix = 'год' }
+    else if (lastNuberAge >= 2 && lastNuberAge <= 4) { prefix = 'года' }
+    else { prefix = "лет" }
+}
+    return prefix;
+}
+
+/*
+1 - год
+2 3 4 - года 
+5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 лет
+21 год
+22 23 24 года
+25 26 27 28 29 30 лет
+31 год
+32 33 34 года
+35 36 37 38 39 40 лет
+*/
+
 function createCat(dataCat) {
     // формируем блок карточек из темплейта-болванки
     const cardInstance = new Person(dataCat, "#cards__personal__template");
     const newCardPerson = cardInstance.getElement();
     if (dataCat.id) {
         selectors.cards__allcards.prepend(newCardPerson);
-        localStorage.clear();
+        // localStorage.clear();
         // console.log(dataCat);
         updateFavInfo(dataCat.favourite, dataCat.id);
     }
@@ -88,16 +118,13 @@ function doingFormElements(stop) {
     // console.log([...stop.srcElement]);
 
     // деструктуризация элементов формы
-    // const fromFormElements = [...selectors["form-add-cat-id"].elements];
     const fromFormElements = [...stop.srcElement.elements];
 
     //извлечение передаваемых данных формы
     const getElementsFromForm = formDataAgregator(fromFormElements);
 
-    // console.log(getElementsFromForm.action);
     if (getElementsFromForm.action === 'edit') {
         // если переданный скрытый параметр из формы edit то редактируем
-        // console.log('ветка обновления ' + getElementsFromForm.id)
         api.updateCatById(getElementsFromForm.id, getElementsFromForm)
             .then(() => {
                 createCat(getElementsFromForm);
@@ -105,12 +132,9 @@ function doingFormElements(stop) {
             })
     } else if (getElementsFromForm.action === 'auth') {
         const inEmail = document.getElementById("form-auth").email.value;
-        // console.log(inEmail);
         const inPassword = document.getElementById("form-auth").password.value;
-        // console.log(inPassword);
         if ((inEmail === loginAuth) && (inPassword === passwordAuth)) {
-            Cookies.set("email", "elogim@gmail.com", {expires: 1});
-            Cookies.set("password", "000", {expires: 1});
+            authData();
             replaceHeaderButtonOpen()
             location.reload();
         }
@@ -166,5 +190,5 @@ function replaceHeaderButtonOpen() {
     document.querySelector(".header_btn i").classList.remove("fa-lock");
     document.querySelector(".header_btn i").classList.add("fa-cat");
     document.querySelector(".authform").classList.add("hide");
-    
+
 }

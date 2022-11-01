@@ -1,7 +1,10 @@
-// Cookies.set("email", "elogim@gmail.com", {expires: 1});
-// Cookies.set("password", "000", {expires: 1});
+function authData() {
+    Cookies.set("email", "elogim@gmail.com", { expires: 1 });
+    Cookies.set("password", "000", { expires: 1 });
+}
 
-if((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
+
+if ((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
     console.log("вы не авторизованы");
     document.querySelector("#exit").classList.add("hide");
     replaceHeaderButtonLock()
