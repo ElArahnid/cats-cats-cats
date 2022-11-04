@@ -173,7 +173,7 @@ class Person {
 
         // вешаем слушателя на кнопку редактирования кота
         if ((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
-            this.editCat.parentElement.classList.remove("show");
+            this.editCat.parentElement.classList.add("hide");
             this.cardTitle.setAttribute("style", "margin-bottom: 0;");
         }
         else {
