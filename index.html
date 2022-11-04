@@ -46,11 +46,23 @@
             </p>
         </div>
     </template>
-    <div class="cat-info hide"></div>
+    <template id="cat-info"><div class="add-cat"></div>
+        <div class="cat-info">
+            <button class="window_close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="cat-info_rate"></div>
+            <div class="cat-info_h3">
+                <h3></h3>
+            </div>
+            <div class="cat-info_cat-info_age"></div>
+            <div class="cat-info_about-info">
+                <div class="cat-info_favor"></div>
+            </div>
+        </div>
+    </template>
     <div class="add-cat">
         <div class="add-cat_popup-container">
             <button class="window-add-cat_close"><i class="fa-solid fa-xmark"></i></button>
-            <div class="window-add-cat hide">
+            <div class="window-add-cat">
                 <!-- добавление котика -->
                 <span>добавить новенького в клуб <span>(* - обязательное поле)</span></span>
                 <form class="form-add-cat" id="form-add-cat-id">
@@ -84,7 +96,7 @@
                 <!--/ добавление котика -->
             </div>
             <!-- удаление котика -->
-            <div class="window-delete-cat hide">
+            <div class="window-delete-cat">
                 <h3>Расклубить котика?</h3>
                 <button type="submit" class="form-delete-cat_button" name="delete">Прощай, котик...</button>
             </div>
@@ -93,7 +105,7 @@
     </div>
     <!-- редактирование котика -->
     <!-- <div class="edit-cat"> -->
-    <div class="edit-cat-form edit-cat_popup-container hide">
+    <div class="edit-cat-form edit-cat_popup-container">
         <button class="window-edit-cat_close"><i class="fa-solid fa-xmark"></i></button>
         <h3></h3>
         <form class="form-edit-cat" id="form-edit-cat-id">
@@ -126,12 +138,13 @@
             </label>
             <input type="hidden" value="edit" name="action">
             <input type="hidden" class="id" name="id">
+            <input type="hidden" class="name" name="name">
             <button type="submit" class="form-edit-cat_button">Кис-кис-кис!</button>
         </form>
     </div>
     <!--/ редактирование котика -->
     <!-- форма авторизации -->
-    <div class="authform hide">
+    <div class="authform">
         <button class="window-auth-cat_close"><i class="fa-solid fa-xmark"></i></button>
         <form class="form-auth" id="form-auth">
             <h3>стой! кто идет?!</h3>
@@ -142,7 +155,7 @@
         </form>
     </div>
     <!--/ форма авторизации -->
-
+    <div class="buffer"></div>
     <script src="./scripts/cats.js" defer></script>
     <script src="./scripts/api.js" defer></script>
     <script src="./scripts/const.js" defer></script>

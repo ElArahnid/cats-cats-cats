@@ -1,8 +1,10 @@
 .add-cat_popup-container,
 .edit-cat_popup-container {
-  position: fixed;
+  position: absolute;
   width: 70%;
-  top: 5%;
+  top: 1%;
+  visibility: hidden;
+  opacity: 0;
 }
 
 /* Форма добавления кота */
@@ -34,17 +36,6 @@
   justify-content: flex-start;
 }
 
-.show {
-  visibility: visible;
-  opacity: 1;
-  transition: 500ms;
-}
-
-.hide {
-  visibility: hidden;
-  opacity: 0;
-}
-
 .window-add-cat,
 .window-edit-cat {
   background-color: var(--bg-formdefault-bgcolor);
@@ -52,6 +43,8 @@
   border-radius: 15px;
   text-align: center;
   padding: 20px;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .form-add-cat,
@@ -77,7 +70,10 @@
   .form-add-cat_preimg,
   .form-edit-cat_preimg {
     width: 100%;
-    min-height: 110px;
+    min-height: 250px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
   }
 }
 
@@ -96,17 +92,15 @@
 }
 
 .form-add-cat_preimg {
-  grid-row: 1 / 4;
+  grid-row: 1 / 6;
   height: 100%;
   background-image: url(../img/nofoto.jpg);
   background-size: cover;
   border-radius: 5px;
 }
 .form-edit-cat_preimg {
-  grid-row: 1 / 4;
+  grid-row: 1 / 6;
   height: 100%;
-  background-size: cover;
-  background-position: top;
   border-radius: 5px;
 }
 .form-add-cat_input, .form-edit-cat_input {
@@ -147,7 +141,7 @@
   color: gold;
 }
 
-.window-add-cat_close, .window-edit-cat_close, .window-auth-cat_close, .window-info-cat_close {
+.window-add-cat_close, .window-edit-cat_close, .window-auth-cat_close, .window-info-cat_close, .window_close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -159,7 +153,7 @@
   cursor: pointer;
 }
 
-.window-add-cat_close:hover, .window-edit-cat_close:hover, .window-auth-cat_close:hover, , .window-info-cat_close:hover {
+.window-add-cat_close:hover, .window-edit-cat_close:hover, .window-auth-cat_close:hover, .window-info-cat_close:hover, .window_close:hover {
   color: red;
   font-size: 26px;
 }
@@ -170,15 +164,18 @@
 
 /* удаление кота */
 .window-delete-cat, .window-edit-cat {
-  position: fixed;
+  position: absolute;
   /* margin-top: 20px; */
   padding: 20px 0;
   width: 70%;
-  top: 5%;
+  top: 1%;
   background-color: var(--bg-formdefault-bgcolor);
   box-shadow: -3px 3px 15px 1px #011d338a;
   border-radius: 15px;
   text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
 }
 
 .form-delete-cat {
@@ -237,8 +234,8 @@
 
 /* редактирование котов */
 .edit-cat-form, .authform {
-  position: fixed;
-  top: 5%;
+  position: absolute;
+  top: 1%;
   background-color: var(--bg-formdefault-bgcolor);
   box-shadow: -3px 3px 15px 1px #011d338a;
   border-radius: 15px;
@@ -247,6 +244,8 @@
   z-index: 200;
   align-self: center;
   justify-self: center;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .authform h3 {
@@ -255,4 +254,15 @@
 
 label {
   color: rgba(0, 0, 0, 0.4);
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: 500ms;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
 }

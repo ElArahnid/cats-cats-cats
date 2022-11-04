@@ -1,24 +1,22 @@
-
-
-
 // edit cat card
 function editCatCard(cardID) {
     // скрываем окно редактируемой карточки
-    document.querySelector('.edit-cat-form').classList.remove("hide");
     document.querySelector('.edit-cat-form').classList.add("show");
-    document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.add("hide");
+    // console.log('жмак на кнопку редактирования');
+    // document.querySelector(`.cards__personal[data-id="${cardID}"]`).remove();
     // document.querySelector('.edit-cat-form')
     document.addEventListener("keyup", (event) => {
         if (event.key === "Escape") {
-            document.querySelector(`.cards__personal[data-id="${cardID}"]`).classList.remove("hide");
+            // document.querySelector(`.cards__personal[data-id="${cardID}"]`).remove();
             document.querySelector('.edit-cat-form').classList.remove("show");
-            document.querySelector('.edit-cat-form').classList.add("hide");
+            document.querySelector(".add-cat_popup-container").classList.remove("show");
+            document.querySelector(".add-cat").classList.remove("show");
+            // console.log('выход из окна редактирования ескейпом');
         }
     })
-
+    // заполняем форуму редактирования кота данными из коллекции
     api.getCatById(cardID)
         .then(({ data }) => {
-            // заполняем существующими данными окно с формой редактирования кота
             // console.log(document.querySelector(".edit-cat-form select.rate"));
             document.querySelector(".edit-cat-form > h3").innerText = "Внесение правок в устав для " + data.name;
             document.querySelector(".edit-cat-form div.form-edit-cat_preimg").setAttribute("style", `background-image: url(${data.img_link})`);
@@ -27,6 +25,7 @@ function editCatCard(cardID) {
             document.querySelector(".edit-cat-form select.rate").value = data.rate;
             document.querySelector(".edit-cat-form textarea.description").value = data.description;
             document.querySelector(".edit-cat-form input.id").value = data.id;
+            document.querySelector(".edit-cat-form input.name").value = data.name;
             // вешаем слушателя на кнопку любимчика
             document.querySelector(".form-edit-cat_favor_checkbox").addEventListener("click", () => {
                 if (document.querySelector("input.form-edit-cat_favor_checkbox").checked) {
@@ -79,12 +78,12 @@ function agePrefix(age) {
     let prefix = '';
     let lastNuberAge = lastNumberPrefix[lastNumberPrefix.length - 1];
 
-    if(age === 1) {prefix = 'год'} else
-    if(age >= 5 && age <= 20) {prefix = "лет"} else {
-    if (lastNuberAge === 1) { prefix = 'год' }
-    else if (lastNuberAge >= 2 && lastNuberAge <= 4) { prefix = 'года' }
-    else { prefix = "лет" }
-}
+    if (age === 1) { prefix = 'год' } else
+        if (age >= 5 && age <= 20) { prefix = "лет" } else {
+            if (lastNuberAge === 1) { prefix = 'год' }
+            else if (lastNuberAge >= 2 && lastNuberAge <= 4) { prefix = 'года' }
+            else { prefix = "лет" }
+        }
     return prefix;
 }
 
@@ -106,9 +105,10 @@ function createCat(dataCat) {
     const newCardPerson = cardInstance.getElement();
     if (dataCat.id) {
         selectors.cards__allcards.prepend(newCardPerson);
-        // localStorage.clear();
-        // console.log(dataCat);
+        // localStorage.clear(); ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // console.log(selectors.cards__allcards.querySelector(`.cards__personal[data-id="${dataCat.id}"]`));
         updateFavInfo(dataCat.favourite, dataCat.id);
+
     }
 }
 
@@ -130,6 +130,33 @@ function doingFormElements(stop) {
                 createCat(getElementsFromForm);
                 popapDone.closePopup();
             })
+            .then(
+                this.parentElement.classList.remove("show")
+            )
+            // .then(
+            //     this.parentElement.classList.add("hide")
+            // )
+            .then(
+                document.querySelector(`.cards__personal[data-id="${getElementsFromForm.id}"]`).setAttribute("style", "display: none;")
+                // console.log(getElementsFromForm)
+            )
+            // .then(
+            //     document.querySelector(`.add-cat_popup-container`).classList.remove("hide")
+            // )
+            .then(
+                document.querySelector(`.add-cat_popup-container`).addEventListener("click", () => {
+                    document.querySelector(`.add-cat_popup-container`).classList.remove("show");
+                    document.querySelector('.add-cat').classList.remove("show");
+                })
+            )
+            // .then(location.reload())
+            // .then(
+            //     allCatsArr = JSON.parse(localStorage.getItem('allCats'))
+            //     // localStorage.removeItem(`allCats.`${getElementsFromForm.id})
+            // )
+            // .then( console.log(allCatsArr, getElementsFromForm.id) )
+            // .then(allCatsArr.forEach((elem) => { if(+elem.id === +getElementsFromForm.id) elem.remove() }))
+
     } else if (getElementsFromForm.action === 'auth') {
         const inEmail = document.getElementById("form-auth").email.value;
         const inPassword = document.getElementById("form-auth").password.value;
@@ -138,9 +165,6 @@ function doingFormElements(stop) {
             replaceHeaderButtonOpen()
             location.reload();
         }
-        else {
-
-        }
     }
     else {
         // если не edit, то добавляем кота
@@ -148,7 +172,8 @@ function doingFormElements(stop) {
             .then(() => {
                 createCat(getElementsFromForm);
                 popapDone.closePopup();
-            }).then(console.log(getElementsFromForm))
+            })
+            // .then(console.log(getElementsFromForm))
     }
 
 }
@@ -189,6 +214,6 @@ function replaceHeaderButtonOpen() {
     document.querySelector(".header_btn i").innerHTML = "+";
     document.querySelector(".header_btn i").classList.remove("fa-lock");
     document.querySelector(".header_btn i").classList.add("fa-cat");
-    document.querySelector(".authform").classList.add("hide");
-
+    document.querySelector(".authform").classList.remove("show");
+    document.querySelector(".add-cat").classList.remove("show")
 }

@@ -10,15 +10,23 @@ class Popup {
     putListenerInBtn() {
         if ((loginAuth === Cookies.get("email")) && (passwordAuth === Cookies.get("password"))) {
             document.querySelector(`.${this.bttnOpen}`).addEventListener("click", this.openPopup)
+            // console.log(this.bttnOpen);
         }
         else {
             document.querySelector(`.${this.bttnOpen} .auth`).parentElement.addEventListener("click", () => {
-                console.log(document.querySelector(".window-auth-cat_close"));
-                document.querySelector("div.authform").classList.remove("hide");
-                document.querySelector(".window-auth-cat_close").addEventListener("click", () => {
-                    document.querySelector("div.authform").classList.add("hide");
-                })
-                console.log("выводим попап авторизации");
+                // console.log(document.querySelector(".window-auth-cat_close"));
+                document.querySelector("div.authform").classList.add("show");
+                document.querySelector(".add-cat").classList.add("show");
+                function hideAuthForm() {
+                    document.querySelector("div.authform").classList.remove("show");
+                    document.querySelector(".add-cat").classList.remove("show");
+                }
+                document.querySelector(".add-cat").addEventListener("click", () => hideAuthForm())
+                document.addEventListener("keyup", (event) => {
+                    if (event.key === 'Escape') hideAuthForm()
+                });
+                document.querySelector(".window-auth-cat_close").addEventListener("click", () => hideAuthForm())
+                // console.log("выводим попап авторизации");
             })
         }
         // console.log(document.querySelector(`.${this.bttnOpen}`));
@@ -32,10 +40,11 @@ class Popup {
     openPopup = () => {
         // console.log(this.action);
         // action = this.action;
-        console.log(this.action);
+        console.log(this.action, this.actionSelector);
         // открываем попап добавлением show class
-        document.querySelector(`.window-${this.action}-cat`).classList.remove(`hide`);
-        document.querySelector(`.window-${this.action}-cat`).classList.remove(`show`);
+        document.querySelector(`.window-${this.action}-cat`).classList.add(`show`);
+        document.querySelector(`.add-cat_popup-container`).classList.add("show");
+        // document.querySelector(`.window-${this.action}-cat`).classList.remove(`show`);
         document.querySelector(`.${this.mainSelector}`).classList.add(`${this.actionSelector}`);
 
         // вешаем слушателя на события клавиатуры
@@ -44,8 +53,18 @@ class Popup {
         // вешаем слушателя на клик вне области попапа
         document.querySelector(`.${this.actionSelector}`).addEventListener("click", (event) => {
             if (event.target.classList.contains(this.actionSelector)) {
-                this.closePopup()
-            } 
+                this.closePopup();
+                localStorage.clear();
+                ////////////////////////////////////////////////////////////////////
+                function hideAuthForm() {
+                    // document.querySelector(".add-cat").classList.remove("show");
+                }
+                document.querySelector('.add-cat').addEventListener("click", () => {hideAuthForm()})
+                document.addEventListener("keyup", (event) => {
+                    if (event.key === 'Escape') hideAuthForm()
+                });
+
+            }
         })
 
         // вешаем слушателя на крестик
@@ -73,8 +92,10 @@ class Popup {
 
     // функция скрытия попапа удаление show с помощью крестика, клика вне окна, Escape
     closePopup = () => {
+        // console.log(document.querySelector(`.${this.actionSelector}`).classList.contains("show"), this.actionSelector)
         document.querySelector(`.${this.actionSelector}`).classList.remove(this.actionSelector);
-        document.querySelector(`.window-${this.action}-cat`).classList.add(`hide`);
+        document.querySelector(`.window-${this.action}-cat`).classList.remove(`show`);
+        document.querySelector(".add-cat_popup-container").classList.remove("show");
         localStorage.clear();
     }
 

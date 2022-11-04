@@ -6,7 +6,7 @@ function authData() {
 
 if ((loginAuth !== Cookies.get("email")) && (passwordAuth !== Cookies.get("password"))) {
     console.log("вы не авторизованы");
-    document.querySelector("#exit").classList.add("hide");
+    // document.querySelector("#exit").classList.add("hide");
     replaceHeaderButtonLock()
 }
 else {
@@ -34,7 +34,6 @@ checkLocalStorage();
 formCatAdd.addEventListener('submit', doingFormElements)
 formCatEdit.addEventListener('submit', doingFormElements)
 authForm.addEventListener('submit', doingFormElements)
-
 
 
 

@@ -1,4 +1,4 @@
 :root {
-    --bg-fata-morgana-bgcolor: radial-gradient(circle at top, rgb(136, 166, 182), rgba(255, 255, 255, 0.2));
-    --bg-formdefault-bgcolor: rgba(166, 187, 223, 0.903);
+    --bg-fata-morgana-bgcolor: radial-gradient(circle at top, rgb(237 219 105), rgb(10 13 234 / 51%));
+    --bg-formdefault-bgcolor: rgb(148 160 226 / 76%);
 }

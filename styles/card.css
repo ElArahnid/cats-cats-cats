@@ -21,10 +21,9 @@
 }
 
 .cards__personal:hover {
-    transform: scale(1.05);
-    transition: 500ms;
+  transform: scale(1.05);
+  transition: 500ms;
 }
-
 
 .face {
   height: 100%;
@@ -54,12 +53,14 @@ p.edit {
   color: red;
 }
 
-#edit_edit, #edit_delete  {
+#edit_edit,
+#edit_delete {
   color: rgba(8, 4, 60, 0.655);
   text-shadow: 1px 2px 3px #fff;
 }
 
-span#edit_edit, span#edit_delete  {
+span#edit_edit,
+span#edit_delete {
   visibility: hidden;
 }
 
@@ -99,26 +100,27 @@ span#edit_edit, span#edit_delete  {
   transform: rotate(45deg);
 }
 
-.istrue, .favor {
+.istrue,
+.favor {
   transition: 500ms;
 }
 
-.label-info:hover::before {
-content: attr(aria-label);
-/* transform: rotate(-45deg); */
-position: absolute;
-top: 45px;
-font-size: 18px;
-background-color: rgba(255, 255, 255, 0.8);
-color: gold;
-padding: 3px 7px;
-border-radius: 15px;
-box-shadow: -3px 3px 15px 1px #011d338a;
-transform: scale(1.05);
-transition: 500ms;
+.cards__personal > .label-info:hover::before {
+  content: attr(aria-label);
+  /* transform: rotate(-45deg); */
+  position: absolute;
+  top: 45px;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: gold;
+  padding: 3px 7px;
+  border-radius: 15px;
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  transform: scale(1.05);
+  transition: 500ms;
 }
 
-.cards__personal > button.favor.istrue {
+.cards__personal > button.favor.istrue, .cat-info_favor > button.favor.istrue {
   font-size: 25px;
   color: gold;
   width: 40px;
@@ -135,7 +137,8 @@ transition: 500ms;
   transform: rotate(45deg);
 }
 
-.card_edit, .card_edit:hover {
+.card_edit,
+.card_edit:hover {
   transform: scale(1.5);
   transition: 200ms;
   z-index: 1000;
@@ -143,18 +146,18 @@ transition: 500ms;
 }
 
 .cards__personal > div.rating {
-position: absolute;
-top: 5px;
-left: 5px;
-color: #4f8196bd;
-text-shadow: -1px 1px 6px white;
-display: flex;
-align-items: flex-start;
-justify-content: center;
-width: min-content;
-gap: 1px;
-flex-wrap: wrap;
-flex-direction: column;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #4f8196bd;
+  text-shadow: -1px 1px 6px white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: min-content;
+  gap: 1px;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .fa-fish:hover {
@@ -166,24 +169,137 @@ flex-direction: column;
   transition: 500ms;
 }
 
+.buffer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-fata-morgana-bgcolor);
+  z-index: 100;
+  flex-direction: column;
+  justify-content: flex-start;
+  visibility: hidden;
+  opacity: 0;
+  /* transition: 500ms; */
+
+}
+
 .cat-info {
-  box-sizing: border-box;
-  position: fixed;
-  align-self: center;
+  position: absolute;
+  box-sizing: content-box;
+  z-index: 9999;
+  width: 60%;
+  height: max-content;
   top: 5%;
-  padding: 30px;
-  width: 80%;
-  transform: scale(1.0);
-  transition: 200ms;
-  z-index: 2000;
   background-color: var(--bg-formdefault-bgcolor);
-  box-shadow: -1px 2px 14px 0px black;
   border-radius: 15px;
-  z-index: 1000;
-  font-size: 120%;
+  box-shadow: -3px 3px 15px 1px #011d338a;
+  padding: 50px 13px 13px 13px;
+  display: grid;
+  /* gap: 10px; */
+  grid-template-areas:
+    "B B B C"
+    "E F F F"
+    "D F F F"
+    "D F F F";
+  grid-template-columns: 40px 1fr 1fr 1fr;
+  grid-template-rows: 30px 30px 1fr;
+  align-self: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.cat-info_face {
+  max-height: 250px;
+  margin: 10px;
+  /* background-color: rgba(255, 255, 255, 0.626); */
+  padding: 10px;
+  border-radius: 15px;
 }
 
 
+.cat-info_h3 {
+  grid-area: B;
+  background-color: rgba(255, 255, 255, 0.626);
+  padding: 10px;
+  border-radius: 15px 0 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-info_h3 h3 {
+  margin: 0;
+}
+
+.cat-info_cat-info_age {
+  grid-area: C;
+  background-color: rgba(255, 255, 255, 0.626);
+  padding: 10px;
+  border-radius: 0 15px 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-info_rate {
+  grid-area: D;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.cat-info_favor {
+  grid-area: E;
+  padding: 10px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  rotate: -45deg;
+  z-index: 5;
+}
+
+.cat-info_favor > button.favor.istrue {
+  font-size: 25px;
+  color: gold;
+  width: 40px;
+  height: 40px;
+  /* border: 1px solid red; */
+  background-color: salmon;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  rotate: -45deg;
+  z-index: 5;
+}
+
+.cat-info_favor > button {
+  color: rgba(255, 217, 0, 0.43);
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(127, 255, 212, 0.685);
+  background-color: rgba(192, 192, 192, 0.562);
+  border-radius: 50%;
+  
+}
+
+.cat-info_about-info {
+  position: relative;
+  grid-area: F;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.626);
+  padding: 10px;
+  border-radius: 15px;
+
+}
+
+.cat-info_about-info img {
+  width: 50%;
+  float: left;
+  margin: 0 10px;
+}
 
 .bigger {
   min-height: 100px;
@@ -191,5 +307,32 @@ flex-direction: column;
   position: absolute;
   top: 0;
   z-index: 999;
-  background-color: #fff;
+}
+
+@media (max-width: 760px) {
+  .cat-info {
+    position: absolute;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    gap: 10px;
+  }
+  .cat-info_rate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+  }
+  .cat-info_face {
+    position: relative;
+    object-fit: cover;
+    float: left;
+  }
+  .cat-info_h3, .cat-info_cat-info_age {
+    border-radius: 15px;
+  }
 }

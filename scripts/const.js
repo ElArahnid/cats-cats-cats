@@ -15,7 +15,11 @@ const selectors = {
 }
 
 let favorClass = ".cards__personal > .favor";
+const favorTagFalse = '<button class="favor label-info" aria-label=""><i class="fa-solid fa-crown"></i></button>';
+const favorTagIsTrue = '<button class="favor label-info istrue" aria-label=""><i class="fa-solid fa-crown"></i></button>';
 const visioClass = "show";
+const fishRate = '<i class="fa-solid fa-fish"></i>';
+const btnClose = `<button class="window_close"><i class="fa-solid fa-xmark"></i></button>`;
 
 const loginAuth = "elogim@gmail.com";
 const passwordAuth = "000";
