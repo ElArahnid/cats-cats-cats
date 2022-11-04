@@ -57,7 +57,7 @@ class Popup {
                 localStorage.clear();
                 ////////////////////////////////////////////////////////////////////
                 function hideAuthForm() {
-                    // document.querySelector(".add-cat").classList.remove("show");
+                    document.querySelector(".add-cat").classList.remove("show");
                 }
                 document.querySelector('.add-cat').addEventListener("click", () => {hideAuthForm()})
                 document.addEventListener("keyup", (event) => {
