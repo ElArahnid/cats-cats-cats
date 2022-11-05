@@ -312,31 +312,3 @@ span#edit_delete {
   z-index: 999;
 }
 
-@media (max-width: 760px) {
-  .cat-info {
-    position: absolute;
-    top: 5%;
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-    gap: 10px;
-    height: 50vh;
-  }
-  .cat-info_rate {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 3px;
-    align-items: center;
-    justify-content: center;
-  }
-  .cat-info_face {
-    position: relative;
-    object-fit: cover;
-    float: left;
-  }
-  .cat-info_h3, .cat-info_cat-info_age {
-    border-radius: 15px;
-  }
-}

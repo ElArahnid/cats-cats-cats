@@ -248,6 +248,8 @@
   opacity: 0;
 }
 
+
+
 .authform h3 {
   text-transform: uppercase;
 }
@@ -266,3 +268,4 @@ label {
   visibility: hidden;
   opacity: 0;
 }
+
